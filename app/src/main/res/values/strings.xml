@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">SunShine</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    
+    <string name="CloudImg">CloudImg</string>
+    <string name="minGrade">minGrade</string>
+    <string name="maxGrade">maxGrade</string>
+    <string name="day">day</string>
+    <string name="item_forcast_textView">Today - Sunny - 88/63</string>
+</resources>
