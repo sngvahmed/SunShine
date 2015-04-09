@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/cloud_main">
+    android:id="@+id/cloud_main"
+    android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="50dp"
@@ -10,11 +11,12 @@
         android:text="@string/hello_world"
         android:textAlignment="gravity"
         android:textSize="30dp"
+        android:id="@+id/City"
         />
     <ListView
         android:paddingTop="10dp"
         android:layout_width="match_parent"
-        android:layout_height="485dp"
+        android:layout_height="match_parent"
         android:layout_gravity="center_horizontal|bottom"
         android:id="@+id/list_item_forecast"></ListView>
-</FrameLayout>
+</LinearLayout>

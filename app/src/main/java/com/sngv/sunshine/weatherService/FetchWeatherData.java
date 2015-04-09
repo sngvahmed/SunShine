@@ -23,7 +23,7 @@ public class FetchWeatherData extends AsyncTask<String , Void , String> {
         String unit = params[0];
         String City = params[1];
         try {
-            String api_url = WeatherCommon.API_WITH_CITY +City+"&units="+unit;
+            String api_url = WeatherCommon.API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt=7";
 
             URL url = new URL(api_url);
             urlConnection = (HttpURLConnection) url.openConnection();

@@ -11,6 +11,8 @@ import android.widget.TextView;
 
 import com.sngv.sunshine.domain.CloudItem;
 
+import org.w3c.dom.Text;
+
 import java.util.List;
 
 /**
@@ -54,12 +56,13 @@ public class WeatherAdapter extends BaseAdapter {
         TextView day = (TextView) convertView.findViewById(R.id.day);
         TextView minGrade = (TextView) convertView.findViewById(R.id.minGrade);
         TextView maxGrade = (TextView) convertView.findViewById(R.id.maxGrade);
+        TextView description = (TextView) convertView.findViewById(R.id.description);
 
         CloudItem cloudItem = cloudItemList.get(position);
         day.setText(cloudItem.getDay());
-        minGrade.setText(Integer.toString(cloudItem.getMinGrade()));
-        maxGrade.setText(Integer.toString(cloudItem.getMaxGrade()));
-
+        minGrade.setText(cloudItem.getMinGrade());
+        maxGrade.setText(cloudItem.getMaxGrade());
+        description.setText(cloudItem.getDescription());
         return convertView;
     }
 }

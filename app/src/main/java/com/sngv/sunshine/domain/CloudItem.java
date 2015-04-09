@@ -13,14 +13,25 @@ import android.widget.TextView;
  */
 public class CloudItem{
     private String day;
-    private int minGrade;
-    private int maxGrade;
+    private String minGrade;
+    private String maxGrade;
     private ImageView cloudImage;
+    private String description;
+    private String country;
 
-    public CloudItem(String Day ,int MinGrade , int MaxGrade){
+    public CloudItem(String Day , String description , double MinGrade , double MaxGrade){
         day = Day;
-        minGrade = MinGrade;
-        maxGrade = MaxGrade;
+        minGrade = Double.toString(MinGrade);
+        maxGrade = Double.toString(MaxGrade);
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getDay() {
@@ -31,19 +42,19 @@ public class CloudItem{
         this.day = day;
     }
 
-    public int getMinGrade() {
+    public String getMinGrade() {
         return minGrade;
     }
 
-    public void setMinGrade(int minGrade) {
+    public void setMinGrade(String minGrade) {
         this.minGrade = minGrade;
     }
 
-    public int getMaxGrade() {
+    public String getMaxGrade() {
         return maxGrade;
     }
 
-    public void setMaxGrade(int maxGrade) {
+    public void setMaxGrade(String maxGrade) {
         this.maxGrade = maxGrade;
     }
 
@@ -53,5 +64,13 @@ public class CloudItem{
 
     public void setCloudImage(ImageView cloudImage) {
         this.cloudImage = cloudImage;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }
