@@ -1,5 +1,9 @@
-package com.sngv.sunshine;
+package com.sngv.sunshine.Controller;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -12,6 +16,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sngv.sunshine.Common.WeatherCommon;
+import com.sngv.sunshine.Controller.Details.Details_Activity;
+import com.sngv.sunshine.Controller.Setting.SettingsActivity;
+import com.sngv.sunshine.R;
+import com.sngv.sunshine.weatherService.WeatherAdapter;
 import com.sngv.sunshine.domain.CloudItem;
 import com.sngv.sunshine.domain.WeatherItem;
 import com.sngv.sunshine.weatherService.JsonParserWeather;
@@ -32,30 +40,58 @@ public class MainActivity extends ActionBarActivity {
     private WeatherService weatherService;
     private String details = null;
     private ListView listView;
-    private WeatherItem weatherItem = new WeatherItem("Egypt");
+    private WeatherItem weatherItem = new WeatherItem();
     private JsonParserWeather jsonParserWeather;
+    private SharedPreferences pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.container);
         init();
-        onClickListnerInit();
+        updateWeather();
+    }
+
+    private void updateWeather() {
+        updateSetting();
+        updateListView();
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        updateWeather();
+    }
+
+    public void updateSetting(){
+        String location = pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
+        if(weatherItem == null)
+            weatherItem = new WeatherItem(location);
+        else
+            weatherItem.setCity(location);
+        weatherService.setUnitType(getUnitType());
+    }
+
+    public String getUnitType(){
+        return pref.getString( getString(R.string.pref_units_key),
+                getString(R.string.pref_units_metric));
     }
 
     public void init(){
-
-        weatherService = new WeatherService();
+        pref = PreferenceManager.getDefaultSharedPreferences(this);
+        weatherService = new WeatherService(getUnitType());
         listView = (ListView) findViewById(R.id.list_item_forecast);
         cloutItem = new ArrayList<CloudItem>();
         jsonParserWeather = new JsonParserWeather();
 
     }
 
-    public void metricWeather(){
+
+
+    public void updateListView(){
         cloutItem.clear();
         details = "Waiting";
-        details = weatherService.retriveWeatherWithMetric(weatherItem);
+        details = weatherService.getWeatherFromApi(weatherItem);
         try {
             String city = "There was error";
             ArrayList<HashMap<String, String>> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
@@ -73,38 +109,20 @@ public class MainActivity extends ActionBarActivity {
             ((TextView)findViewById(R.id.City)).setText(city);
         } catch (JSONException e) {
             Toast.makeText(MainActivity.this, e.toString() , Toast.LENGTH_LONG).show();
-        }
-    }
-
-    public void imperialWeather(){
-        cloutItem.clear();
-        details = "Waiting";
-        details = weatherService.retriveWeatherWithImperial(weatherItem);
-        try {
-            String city = "There was Error";
-            ArrayList<HashMap<String, String>> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
-            for(HashMap<String,String> str : weatherJsonParse){
-                city = str.get(WeatherCommon.PARSE_COUNTRY);
-                double low = Double.parseDouble(str.get(WeatherCommon.PARSE_LOW));
-                double height = Double.parseDouble(str.get(WeatherCommon.PARSE_HIGHT));
-                String day = str.get(WeatherCommon.PARSE_DAY);
-                String description = str.get(WeatherCommon.PARSE_DESCRIPTION);
-                CloudItem cloud = new CloudItem(day , description , height ,low);
-                cloutItem.add(cloud);
-                weatherAdapter = new WeatherAdapter(this , cloutItem);
-                listView.setAdapter(weatherAdapter);
-            }
-            ((TextView)findViewById(R.id.City)).setText(city);
-        } catch (JSONException e) {
+        } catch (Exception e){
             Toast.makeText(MainActivity.this, e.toString() , Toast.LENGTH_LONG).show();
         }
-
     }
 
     public void onClickListnerInit(){
+        final Context con = this;
+
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            public void onItemClick(AdapterView<?> arg0, View arg1,int arg2, long arg3){
-                Toast.makeText(MainActivity.this,weatherService.getData(), Toast.LENGTH_LONG).show();
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                final Intent detailsIntent = new Intent(con, Details_Activity.class).putExtra(Intent.EXTRA_TEXT , weatherService.getData());
+                startActivity(detailsIntent);
             }
         });
     }
@@ -119,11 +137,9 @@ public class MainActivity extends ActionBarActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+            Intent intent = new Intent(MainActivity.this , SettingsActivity.class);
+            startActivity(intent);
             return true;
-        }else if (id == R.id.action_Imperial){
-            imperialWeather();
-        }else if (id == R.id.action_Metric){
-            metricWeather();
         }
         return super.onOptionsItemSelected(item);
     }

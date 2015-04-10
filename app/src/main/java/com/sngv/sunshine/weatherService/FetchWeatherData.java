@@ -1,9 +1,14 @@
 package com.sngv.sunshine.weatherService;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.util.Log;
 
 import com.sngv.sunshine.Common.WeatherCommon;
+import com.sngv.sunshine.R;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -18,10 +23,12 @@ public class FetchWeatherData extends AsyncTask<String , Void , String> {
     private BufferedReader bufferedReader;
     private String forecastJsonStr;
 
+
     @Override
     protected String doInBackground(String... params) {
         String unit = params[0];
         String City = params[1];
+
         try {
             String api_url = WeatherCommon.API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt=7";
 

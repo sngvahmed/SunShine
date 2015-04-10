@@ -1,4 +1,4 @@
-package com.sngv.sunshine;
+package com.sngv.sunshine.weatherService;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.sngv.sunshine.R;
 import com.sngv.sunshine.domain.CloudItem;
 
 import org.w3c.dom.Text;
@@ -20,11 +21,11 @@ import java.util.List;
  */
 public class WeatherAdapter extends BaseAdapter {
 
-    private ActionBarActivity activity;
+    private Activity activity;
     private LayoutInflater inflater;
     private List<CloudItem> cloudItemList;
 
-    public WeatherAdapter(ActionBarActivity activity , List<CloudItem> cloudItem){
+    public WeatherAdapter(Activity activity , List<CloudItem> cloudItem){
         cloudItemList = cloudItem;
         this.activity = activity;
     }

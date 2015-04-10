@@ -56,13 +56,19 @@ public class JsonParserWeather {
             HashMap<String,String> tmp = new HashMap<String,String>();
             JSONObject dayForecast = weatherArray.getJSONObject(i);
             long dateTime;
+
+
             dateTime = dayTime.setJulianDay(julianStartDay+i);
             tmp.put(WeatherCommon.PARSE_DAY , getReadableDateString(dateTime));
             JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
             tmp.put(WeatherCommon.PARSE_DESCRIPTION,weatherObject.getString(OWM_DESCRIPTION));
             JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
-            tmp.put(WeatherCommon.PARSE_HIGHT,Double.toString(temperatureObject.getDouble(OWM_MAX)));
-            tmp.put(WeatherCommon.PARSE_LOW,Double.toString(temperatureObject.getDouble(OWM_MIN)));
+
+            long roundedHigh = Math.round(temperatureObject.getDouble(OWM_MAX));
+            long roundedLow = Math.round(temperatureObject.getDouble(OWM_MIN));
+            tmp.put(WeatherCommon.PARSE_HIGHT,Double.toString(roundedHigh));
+            tmp.put(WeatherCommon.PARSE_LOW,Double.toString(roundedLow));
+
             tmp.put(WeatherCommon.PARSE_COUNTRY , city.getString("country"));
             res.add(tmp);
         }
