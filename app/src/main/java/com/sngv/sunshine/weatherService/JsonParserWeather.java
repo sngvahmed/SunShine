@@ -31,14 +31,6 @@ public class JsonParserWeather {
         return shortenedDateFormat.format(time);
     }
 
-    private String formatHighLows(double high, double low) {
-        long roundedHigh = Math.round(high);
-        long roundedLow = Math.round(low);
-
-        String highLowStr = roundedHigh + "/" + roundedLow;
-        return highLowStr;
-    }
-
     public ArrayList<HashMap<String,String> >  getWeatherDataFromJson(String forecastJsonStr, int numDays)
             throws JSONException {
 
@@ -66,8 +58,9 @@ public class JsonParserWeather {
 
             long roundedHigh = Math.round(temperatureObject.getDouble(OWM_MAX));
             long roundedLow = Math.round(temperatureObject.getDouble(OWM_MIN));
-            tmp.put(WeatherCommon.PARSE_HIGHT,Double.toString(roundedHigh));
-            tmp.put(WeatherCommon.PARSE_LOW,Double.toString(roundedLow));
+
+            tmp.put(WeatherCommon.PARSE_HIGHT,Long.toString(roundedHigh));
+            tmp.put(WeatherCommon.PARSE_LOW,Long.toString(roundedLow));
 
             tmp.put(WeatherCommon.PARSE_COUNTRY , city.getString("country"));
             res.add(tmp);

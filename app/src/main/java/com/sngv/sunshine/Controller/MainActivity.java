@@ -49,6 +49,7 @@ public class MainActivity extends ActionBarActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.container);
         init();
+        onClickListnerInit();
         updateWeather();
     }
 
@@ -97,8 +98,8 @@ public class MainActivity extends ActionBarActivity {
             ArrayList<HashMap<String, String>> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
             for(HashMap<String,String> str : weatherJsonParse){
                 city = str.get(WeatherCommon.PARSE_COUNTRY);
-                double low = Double.parseDouble(str.get(WeatherCommon.PARSE_LOW));
-                double height = Double.parseDouble(str.get(WeatherCommon.PARSE_HIGHT));
+                Long low = Long.parseLong(str.get(WeatherCommon.PARSE_LOW));
+                Long height = Long.parseLong(str.get(WeatherCommon.PARSE_HIGHT));
                 String day = str.get(WeatherCommon.PARSE_DAY);
                 String description = str.get(WeatherCommon.PARSE_DESCRIPTION);
                 CloudItem cloud = new CloudItem(day , description , height ,low);

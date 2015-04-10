@@ -61,8 +61,8 @@ public class WeatherAdapter extends BaseAdapter {
 
         CloudItem cloudItem = cloudItemList.get(position);
         day.setText(cloudItem.getDay());
-        minGrade.setText(cloudItem.getMinGrade());
-        maxGrade.setText(cloudItem.getMaxGrade());
+        minGrade.setText("min : " + cloudItem.getMinGrade());
+        maxGrade.setText("max : " + cloudItem.getMaxGrade());
         description.setText(cloudItem.getDescription());
         return convertView;
     }

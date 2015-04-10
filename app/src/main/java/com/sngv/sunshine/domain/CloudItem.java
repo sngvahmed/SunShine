@@ -19,10 +19,10 @@ public class CloudItem{
     private String description;
     private String country;
 
-    public CloudItem(String Day , String description , double MinGrade , double MaxGrade){
+    public CloudItem(String Day , String description , Long MaxGrade , Long MinGrade){
         day = Day;
-        minGrade = Double.toString(MinGrade);
-        maxGrade = Double.toString(MaxGrade);
+        minGrade = Long.toString(MinGrade);
+        maxGrade = Long.toString(MaxGrade);
         this.description = description;
     }
 
