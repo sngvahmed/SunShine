@@ -1,36 +1,103 @@
 package com.sngv.sunshine.domain;
 
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
+import android.app.Activity;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 /**
- * Created by sngv on 09/04/15.
+ * Created by sngv on 08/04/15.
  */
 public class WeatherItem {
-    private String City;
-    private String postalCode;
+    private String day;
+    private String minGrade;
+    private String maxGrade;
+    private ImageView cloudImage;
+    private String description;
+    private String country;
+    private String columnPressure;
+    private String windSpeed;
+    private String degree;
 
-    public WeatherItem(){
-        City = "Egypt";
+    public String getColumnPressure() {
+        return columnPressure;
     }
 
-    public WeatherItem(String city) {
-        City = city;
+    public void setColumnPressure(String columnPressure) {
+        this.columnPressure = columnPressure;
     }
 
-    public String getCity() {
-        return City;
+    public String getWindSpeed() {
+        return windSpeed;
     }
 
-    public void setCity(String city) {
-        City = city;
+    public void setWindSpeed(String windSpeed) {
+        this.windSpeed = windSpeed;
     }
 
-    public String getPostalCode() {
-        return postalCode;
+    public String getDegree() {
+        return degree;
     }
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
+    public void setDegree(String degree) {
+        this.degree = degree;
+    }
+
+    public WeatherItem(String Day, String description, Long MaxGrade, Long MinGrade){
+        day = Day;
+        minGrade = Long.toString(MinGrade);
+        maxGrade = Long.toString(MaxGrade);
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getDay() {
+        return day;
+    }
+
+    public void setDay(String day) {
+        this.day = day;
+    }
+
+    public String getMinGrade() {
+        return minGrade;
+    }
+
+    public void setMinGrade(String minGrade) {
+        this.minGrade = minGrade;
+    }
+
+    public String getMaxGrade() {
+        return maxGrade;
+    }
+
+    public void setMaxGrade(String maxGrade) {
+        this.maxGrade = maxGrade;
+    }
+
+    public ImageView getCloudImage() {
+        return cloudImage;
+    }
+
+    public void setCloudImage(ImageView cloudImage) {
+        this.cloudImage = cloudImage;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 }

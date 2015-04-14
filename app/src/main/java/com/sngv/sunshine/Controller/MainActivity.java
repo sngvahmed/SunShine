@@ -21,14 +21,13 @@ import com.sngv.sunshine.Controller.Details.Details_Activity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.weatherService.WeatherAdapter;
-import com.sngv.sunshine.domain.CloudItem;
 import com.sngv.sunshine.domain.WeatherItem;
+import com.sngv.sunshine.domain.LocationItem;
 import com.sngv.sunshine.weatherService.JsonParserWeather;
 import com.sngv.sunshine.weatherService.WeatherService;
 
 import org.json.JSONException;
 
-import java.net.URI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -37,11 +36,11 @@ import java.util.List;
 public class MainActivity extends ActionBarActivity {
     private ArrayAdapter<String> weathers_adapter ;
     private WeatherAdapter weatherAdapter;
-    private List<CloudItem> cloutItem;
+    private List<WeatherItem> cloutItem;
     private WeatherService weatherService;
     private String details = null;
     private ListView listView;
-    private WeatherItem weatherItem = new WeatherItem();
+    private LocationItem weatherItem = new LocationItem();
     private JsonParserWeather jsonParserWeather;
     private SharedPreferences pref;
 
@@ -68,9 +67,9 @@ public class MainActivity extends ActionBarActivity {
     public void updateSetting(){
         String location = pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
         if(weatherItem == null)
-            weatherItem = new WeatherItem(location);
+            weatherItem = new LocationItem(location);
         else
-            weatherItem.setCity(location);
+            weatherItem.setPATH_LOCATION(location);
         weatherService.setUnitType(getUnitType());
     }
 
@@ -83,7 +82,7 @@ public class MainActivity extends ActionBarActivity {
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         weatherService = new WeatherService(getUnitType());
         listView = (ListView) findViewById(R.id.list_item_forecast);
-        cloutItem = new ArrayList<CloudItem>();
+        cloutItem = new ArrayList<WeatherItem>();
         jsonParserWeather = new JsonParserWeather();
 
     }
@@ -103,7 +102,7 @@ public class MainActivity extends ActionBarActivity {
                 Long height = Long.parseLong(str.get(WeatherCommon.PARSE_HIGHT));
                 String day = str.get(WeatherCommon.PARSE_DAY);
                 String description = str.get(WeatherCommon.PARSE_DESCRIPTION);
-                CloudItem cloud = new CloudItem(day , description , height ,low);
+                WeatherItem cloud = new WeatherItem(day , description , height ,low);
                 cloutItem.add(cloud);
                 weatherAdapter = new WeatherAdapter(this , cloutItem);
                 listView.setAdapter(weatherAdapter);

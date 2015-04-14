@@ -2,7 +2,6 @@ package com.sngv.sunshine.weatherService;
 
 import android.app.Activity;
 import android.content.Context;
-import android.support.v7.app.ActionBarActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,9 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.domain.CloudItem;
-
-import org.w3c.dom.Text;
+import com.sngv.sunshine.domain.WeatherItem;
 
 import java.util.List;
 
@@ -23,10 +20,10 @@ public class WeatherAdapter extends BaseAdapter {
 
     private Activity activity;
     private LayoutInflater inflater;
-    private List<CloudItem> cloudItemList;
+    private List<WeatherItem> weatherItemList;
 
-    public WeatherAdapter(Activity activity , List<CloudItem> cloudItem){
-        cloudItemList = cloudItem;
+    public WeatherAdapter(Activity activity , List<WeatherItem> weatherItem){
+        weatherItemList = weatherItem;
         this.activity = activity;
     }
 
@@ -34,12 +31,12 @@ public class WeatherAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
-        return cloudItemList.size();
+        return weatherItemList.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return cloudItemList.get(position);
+        return weatherItemList.get(position);
     }
 
     @Override
@@ -59,11 +56,11 @@ public class WeatherAdapter extends BaseAdapter {
         TextView maxGrade = (TextView) convertView.findViewById(R.id.maxGrade);
         TextView description = (TextView) convertView.findViewById(R.id.description);
 
-        CloudItem cloudItem = cloudItemList.get(position);
-        day.setText(cloudItem.getDay());
-        minGrade.setText("min : " + cloudItem.getMinGrade());
-        maxGrade.setText("max : " + cloudItem.getMaxGrade());
-        description.setText(cloudItem.getDescription());
+        WeatherItem weatherItem = weatherItemList.get(position);
+        day.setText(weatherItem.getDay());
+        minGrade.setText("min : " + weatherItem.getMinGrade());
+        maxGrade.setText("max : " + weatherItem.getMaxGrade());
+        description.setText(weatherItem.getDescription());
         return convertView;
     }
 }

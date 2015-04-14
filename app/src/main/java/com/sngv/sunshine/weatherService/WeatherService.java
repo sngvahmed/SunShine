@@ -1,21 +1,7 @@
 package com.sngv.sunshine.weatherService;
 
-import android.app.Activity;
-import android.content.SharedPreferences;
-import android.os.AsyncTask;
-import android.util.Log;
+import com.sngv.sunshine.domain.LocationItem;
 
-import com.sngv.sunshine.Common.WeatherCommon;
-import com.sngv.sunshine.R;
-import com.sngv.sunshine.domain.WeatherItem;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 /**
@@ -37,10 +23,10 @@ public class WeatherService {
         this.unitType = unitType;
     }
 
-    public String getWeatherFromApi(WeatherItem weatherItem){
+    public String getWeatherFromApi(LocationItem weatherItem){
         FetchWeatherData fetchWeatherData = new FetchWeatherData();
         try {
-            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getCity()).get();
+            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getPATH_LOCATION()).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {
