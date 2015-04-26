@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sngv.sunshine.Controller.Details.Details_Activity;
 import com.sngv.sunshine.Service.Utility;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.DBController;
@@ -35,6 +36,7 @@ public class MainActivity extends ActionBarActivity {
     private LocationItem locationItem = new LocationItem();
     private SharedPreferences pref;
     private Utility utility;
+    private MainCursorAdapter weatherAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -107,7 +109,6 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void insertIntoListFromDB(){
-        MainCursorAdapter weatherAdapter;
         ((TextView)findViewById(R.id.City)).setText(locationItem.getLocation());
         try {
             Cursor c = dbController.getAllWeatherCursor();
@@ -134,8 +135,15 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                final Intent detailsIntent = new Intent(con, Details_Activity.class).putExtra(Intent.EXTRA_TEXT , locationItem.getData());
-//                startActivity(detailsIntent);
+                Cursor cursor = weatherAdapter.getCursor();
+                if(cursor != null && cursor.moveToPosition(position)){
+                    WeatherItem weatherItem = new WeatherItem();
+                    weatherItem.setFromCursor(cursor);
+                    final Intent detailsIntent = new Intent(con, Details_Activity.class)
+                            .putExtra(Intent.EXTRA_TEXT, weatherItem);
+                    startActivity(detailsIntent);
+                }
+
             }
         });
     }

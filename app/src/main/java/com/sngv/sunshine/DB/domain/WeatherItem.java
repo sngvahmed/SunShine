@@ -6,10 +6,12 @@ import android.widget.ImageView;
 
 import com.sngv.sunshine.DB.DBCommon;
 
+import java.io.Serializable;
+
 /**
  * Created by sngv on 08/04/15.
  */
-public class WeatherItem {
+public class WeatherItem implements Serializable{
     private Long id;
     private String day = "";
     private String minGrade = "";

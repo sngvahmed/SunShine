@@ -52,58 +52,64 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="fragment_details_.xml" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.6416382" vertical-offset="3359" max-vertical-offset="3945">
-              <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2550">
+              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
               <folding>
-                <element signature="e#221#256#0" expanded="true" />
-                <element signature="e#282#317#0" expanded="true" />
-                <element signature="e#341#374#0" expanded="true" />
-                <element signature="e#401#434#0" expanded="true" />
-                <element signature="e#1371#1384#0" expanded="true" />
-                <element signature="e#2030#2048#0" expanded="true" />
-                <element signature="e#2495#2513#0" expanded="true" />
-                <element signature="e#3582#3603#0" expanded="true" />
-                <element signature="e#4668#4684#0" expanded="true" />
-                <element signature="e#5203#5219#0" expanded="true" />
-                <element signature="e#6220#6239#0" expanded="true" />
-                <element signature="e#6759#6778#0" expanded="true" />
-                <element signature="e#7781#7799#0" expanded="true" />
-                <element signature="e#8319#8337#0" expanded="true" />
-                <element signature="e#9335#9353#0" expanded="true" />
-                <element signature="e#9873#9891#0" expanded="true" />
+                <element signature="e#2343#2380#0" expanded="true" />
+                <element signature="e#2383#2424#0" expanded="true" />
+                <element signature="e#2498#2532#0" expanded="true" />
+                <element signature="e#2533#2570#0" expanded="true" />
+                <element signature="e#2642#2678#0" expanded="true" />
+                <element signature="e#2679#2719#0" expanded="true" />
+                <element signature="e#4655#5315#0" expanded="true" />
+                <element signature="e#5304#5305#0" expanded="true" />
+                <element signature="e#6203#6240#0" expanded="true" />
+                <element signature="e#6258#6299#0" expanded="true" />
+                <element signature="e#6348#6381#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="container.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/container.xml">
-          <provider editor-type-id="android-designer">
-            <state />
-          </provider>
+      <file leaf-file-name="DetailsFragment.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="390">
-              <caret line="14" column="10" selection-start-line="6" selection-start-column="3" selection-end-line="14" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.41080198" vertical-offset="229" max-vertical-offset="960">
+              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="clout_item.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml">
+      <file leaf-file-name="fragment_details_.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-18.64" vertical-offset="719" max-vertical-offset="1305">
-              <caret line="79" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-              <folding />
+            <state vertical-scroll-proportion="-12.6" vertical-offset="15" max-vertical-offset="3945">
+              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+              <folding>
+                <element signature="e#221#256#0" expanded="true" />
+                <element signature="e#282#317#0" expanded="true" />
+                <element signature="e#341#374#0" expanded="true" />
+                <element signature="e#401#434#0" expanded="true" />
+                <element signature="e#1374#1387#0" expanded="true" />
+                <element signature="e#2024#2042#0" expanded="true" />
+                <element signature="e#2489#2507#0" expanded="true" />
+                <element signature="e#3567#3588#0" expanded="true" />
+                <element signature="e#4653#4669#0" expanded="true" />
+                <element signature="e#5188#5204#0" expanded="true" />
+                <element signature="e#6205#6224#0" expanded="true" />
+                <element signature="e#6744#6763#0" expanded="true" />
+                <element signature="e#7766#7784#0" expanded="true" />
+                <element signature="e#8304#8322#0" expanded="true" />
+                <element signature="e#9320#9338#0" expanded="true" />
+                <element signature="e#9858#9876#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -856,7 +862,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/CloudItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/MetriceService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/ImperialService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/ServiceWeather.java" />
@@ -871,7 +876,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/details/BackFragmentDetails.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/details/Details_Activity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/details/DetailsFragment.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/arrays.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/detail_fragment.xml" />
@@ -904,9 +908,11 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/FetchWeatherData.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/LocationItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Setting/SettingsActivity.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/WeatherItem.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java" />
       </list>
     </option>
   </component>
@@ -1050,33 +1056,7 @@
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="DB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SunShine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sunshine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="DB" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="domain" />
+              <option name="myItemId" value="Controller" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1099,6 +1079,36 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Main" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SunShine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="sunshine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Controller" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Details" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1331,7 +1341,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.328594" sideWeight="0.5" order="9" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20921451" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.20921451" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23233908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47723705" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
@@ -1583,13 +1593,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="720">
-          <caret line="41" column="8" selection-start-line="41" selection-start-column="8" selection-end-line="42" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/Details_Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="507" max-vertical-offset="1332">
@@ -1642,17 +1645,6 @@
         <state vertical-scroll-proportion="0.33333334" vertical-offset="7237" max-vertical-offset="9450">
           <caret line="533" column="53" selection-start-line="533" selection-start-column="53" selection-end-line="533" selection-end-column="53" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/DBController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7790507" vertical-offset="319" max-vertical-offset="930">
-          <caret line="53" column="66" selection-start-line="53" selection-start-column="66" selection-end-line="53" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1159#1172#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1756,25 +1748,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/WeatherItem.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.16530278" vertical-offset="1189" max-vertical-offset="1800">
-          <caret line="134" column="0" selection-start-line="134" selection-start-column="0" selection-end-line="146" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.22094926" vertical-offset="450" max-vertical-offset="2385">
-          <caret line="65" column="34" selection-start-line="65" selection-start-column="34" selection-end-line="65" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-18.64" vertical-offset="719" max-vertical-offset="1305">
+        <state vertical-scroll-proportion="0.79522187" vertical-offset="719" max-vertical-offset="1305">
           <caret line="79" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
@@ -1785,7 +1761,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/container.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-8.4" vertical-offset="0" max-vertical-offset="390">
+        <state vertical-scroll-proportion="0.35836178" vertical-offset="0" max-vertical-offset="586">
           <caret line="14" column="10" selection-start-line="6" selection-start-column="3" selection-end-line="14" selection-end-column="10" />
           <folding />
         </state>
@@ -1802,32 +1778,79 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/WeatherItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.36824876" vertical-offset="0" max-vertical-offset="1800">
+          <caret line="21" column="33" selection-start-line="21" selection-start-column="33" selection-end-line="21" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/DBController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5826514" vertical-offset="319" max-vertical-offset="930">
+          <caret line="45" column="40" selection-start-line="45" selection-start-column="40" selection-end-line="45" selection-end-column="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1159#1172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2550">
+          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+          <folding>
+            <element signature="e#2343#2380#0" expanded="true" />
+            <element signature="e#2383#2424#0" expanded="true" />
+            <element signature="e#2498#2532#0" expanded="true" />
+            <element signature="e#2533#2570#0" expanded="true" />
+            <element signature="e#2642#2678#0" expanded="true" />
+            <element signature="e#2679#2719#0" expanded="true" />
+            <element signature="e#4655#5315#0" expanded="true" />
+            <element signature="e#5304#5305#0" expanded="true" />
+            <element signature="e#6203#6240#0" expanded="true" />
+            <element signature="e#6258#6299#0" expanded="true" />
+            <element signature="e#6348#6381#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6416382" vertical-offset="3359" max-vertical-offset="3945">
-          <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
+        <state vertical-scroll-proportion="-12.6" vertical-offset="15" max-vertical-offset="3945">
+          <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding>
             <element signature="e#221#256#0" expanded="true" />
             <element signature="e#282#317#0" expanded="true" />
             <element signature="e#341#374#0" expanded="true" />
             <element signature="e#401#434#0" expanded="true" />
-            <element signature="e#1371#1384#0" expanded="true" />
-            <element signature="e#2030#2048#0" expanded="true" />
-            <element signature="e#2495#2513#0" expanded="true" />
-            <element signature="e#3582#3603#0" expanded="true" />
-            <element signature="e#4668#4684#0" expanded="true" />
-            <element signature="e#5203#5219#0" expanded="true" />
-            <element signature="e#6220#6239#0" expanded="true" />
-            <element signature="e#6759#6778#0" expanded="true" />
-            <element signature="e#7781#7799#0" expanded="true" />
-            <element signature="e#8319#8337#0" expanded="true" />
-            <element signature="e#9335#9353#0" expanded="true" />
-            <element signature="e#9873#9891#0" expanded="true" />
+            <element signature="e#1374#1387#0" expanded="true" />
+            <element signature="e#2024#2042#0" expanded="true" />
+            <element signature="e#2489#2507#0" expanded="true" />
+            <element signature="e#3567#3588#0" expanded="true" />
+            <element signature="e#4653#4669#0" expanded="true" />
+            <element signature="e#5188#5204#0" expanded="true" />
+            <element signature="e#6205#6224#0" expanded="true" />
+            <element signature="e#6744#6763#0" expanded="true" />
+            <element signature="e#7766#7784#0" expanded="true" />
+            <element signature="e#8304#8322#0" expanded="true" />
+            <element signature="e#9320#9338#0" expanded="true" />
+            <element signature="e#9858#9876#0" expanded="true" />
           </folding>
         </state>
       </provider>
       <provider editor-type-id="android-designer">
         <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.41080198" vertical-offset="229" max-vertical-offset="960">
+          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>

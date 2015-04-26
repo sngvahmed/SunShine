@@ -8,13 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
 
 public class DetailsFragment extends Fragment {
     static String status = "true";
+    private WeatherItem weatherItem;
+    private TextView country , day , min , max;
+    private TextView desc , speed , pressure , humidity , degree;
 
-    TextView reciveFromIntent;
-    View view;
+
+    private View view;
 
     public DetailsFragment() {
     }
@@ -24,22 +28,41 @@ public class DetailsFragment extends Fragment {
                              Bundle savedInstanceState) {
         status = "true";
         view = inflater.inflate(R.layout.fragment_details_, container, false);
+        getExtra();
         init();
-        loadOnStratUp();
+        setItem();
         return view;
     }
 
     private void init() {
-        reciveFromIntent = (TextView) view.findViewById(R.id.detalisFragment);
+        country = (TextView) view.findViewById(R.id.country_details);
+        day = (TextView) view.findViewById(R.id.day_details);
+        min = (TextView) view.findViewById(R.id.minGrade_details);
+        max = (TextView) view.findViewById(R.id.maxGrade_details);
+        desc = (TextView) view.findViewById(R.id.description_details);
+        speed = (TextView) view.findViewById(R.id.windSpeed_details);
+        pressure = (TextView) view.findViewById(R.id.pressure_details);
+        humidity = (TextView) view.findViewById(R.id.humidity_details);
+        degree = (TextView) view.findViewById(R.id.degree_details);
     }
 
-    private void loadOnStratUp() {
+    private void setItem() {
+        country.setText(weatherItem.getCountry());
+        day.setText(weatherItem.getDay());
+        min.setText(weatherItem.getMinGrade());
+        max.setText(weatherItem.getMaxGrade());
+        desc.setText(weatherItem.getDescription());
+        speed.setText(weatherItem.getWindSpeed());
+        pressure.setText(weatherItem.getPressure());
+        humidity.setText(weatherItem.getHumidity());
+        degree.setText(weatherItem.getDegree());
+    }
+
+    private void getExtra() {
         Intent intent = getActivity().getIntent();
         if(intent == null || !intent.hasExtra(Intent.EXTRA_TEXT)){
-            status = "false";
             return ;
         }
-        String data = intent.getExtras().get(Intent.EXTRA_TEXT).toString();
-        reciveFromIntent.setText(data);
+        weatherItem = (WeatherItem) intent.getSerializableExtra(Intent.EXTRA_TEXT);
     }
 }

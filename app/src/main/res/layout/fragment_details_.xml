@@ -20,7 +20,7 @@
         android:textAlignment="gravity"
         android:textSize="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:id="@+id/City_details"
+        android:id="@+id/country_details"
         android:paddingRight="25dp"
     />
 
@@ -30,7 +30,7 @@
         android:textSize="25dp"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="@string/day"
-        android:id="@+id/day_maxGrade_details"
+        android:id="@+id/day_details"
     />
     </LinearLayout>
     <LinearLayout
@@ -58,7 +58,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/minGrade"
-                    android:id="@+id/minGrade_maxGrade_details"
+                    android:id="@+id/minGrade_details"
                     />
         </LinearLayout>
 
@@ -170,7 +170,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/windSpeed"
-                    android:id="@+id/WindSpeed_details"
+                    android:id="@+id/windSpeed_details"
                     />
         </LinearLayout></LinearLayout>
 
