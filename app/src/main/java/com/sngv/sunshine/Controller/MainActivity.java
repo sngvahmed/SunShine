@@ -16,9 +16,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sngv.sunshine.Common.WeatherCommon;
 import com.sngv.sunshine.Controller.Details.Details_Activity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
+import com.sngv.sunshine.DB.DBController;
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.weatherService.WeatherAdapter;
 import com.sngv.sunshine.domain.WeatherItem;
@@ -29,18 +29,16 @@ import com.sngv.sunshine.weatherService.WeatherService;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
+    private DBController dbController;
     private ArrayAdapter<String> weathers_adapter ;
     private WeatherAdapter weatherAdapter;
-    private List<WeatherItem> cloutItem;
     private WeatherService weatherService;
-    private String details = null;
     private ListView listView;
-    private LocationItem weatherItem = new LocationItem();
+    private LocationItem LocationItem = new LocationItem();
     private JsonParserWeather jsonParserWeather;
     private SharedPreferences pref;
 
@@ -55,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void updateWeather() {
         updateSetting();
-        updateListView();
+        updateWeatherNetwork();
     }
 
     @Override
@@ -66,10 +64,10 @@ public class MainActivity extends ActionBarActivity {
 
     public void updateSetting(){
         String location = pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
-        if(weatherItem == null)
-            weatherItem = new LocationItem(location);
+        if(LocationItem == null)
+            LocationItem = new LocationItem(location);
         else
-            weatherItem.setPATH_LOCATION(location);
+            LocationItem.setPATH_LOCATION(location);
         weatherService.setUnitType(getUnitType());
     }
 
@@ -82,42 +80,38 @@ public class MainActivity extends ActionBarActivity {
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         weatherService = new WeatherService(getUnitType());
         listView = (ListView) findViewById(R.id.list_item_forecast);
-        cloutItem = new ArrayList<WeatherItem>();
         jsonParserWeather = new JsonParserWeather();
-
+        dbController = new DBController(this);
     }
 
 
 
-    public void updateListView(){
+    public void updateWeatherNetwork(){
+        List<WeatherItem> cloutItem = new ArrayList<WeatherItem>();
         cloutItem.clear();
-        details = "Waiting";
-        details = weatherService.getWeatherFromApi(weatherItem);
+        String details = weatherService.getWeatherFromApi(LocationItem);
+        ((TextView)findViewById(R.id.City)).setText("NO Country Found");
         try {
-            String city = "There was error";
-            ArrayList<HashMap<String, String>> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
-            for(HashMap<String,String> str : weatherJsonParse){
-                city = str.get(WeatherCommon.PARSE_COUNTRY);
-                Long low = Long.parseLong(str.get(WeatherCommon.PARSE_LOW));
-                Long height = Long.parseLong(str.get(WeatherCommon.PARSE_HIGHT));
-                String day = str.get(WeatherCommon.PARSE_DAY);
-                String description = str.get(WeatherCommon.PARSE_DESCRIPTION);
-                WeatherItem cloud = new WeatherItem(day , description , height ,low);
-                cloutItem.add(cloud);
+            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
+            String city = "no Country found";
+            for(WeatherItem str : weatherJsonParse){
+                str.printThem();
+                city = str.getCountry();
+                cloutItem.add(str);
                 weatherAdapter = new WeatherAdapter(this , cloutItem);
                 listView.setAdapter(weatherAdapter);
+                dbController.insertIntoWeather(str);
             }
             ((TextView)findViewById(R.id.City)).setText(city);
         } catch (JSONException e) {
-            Toast.makeText(MainActivity.this, e.toString() , Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
         } catch (Exception e){
-            Toast.makeText(MainActivity.this, e.toString() , Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 
     public void onClickListnerInit(){
         final Context con = this;
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override

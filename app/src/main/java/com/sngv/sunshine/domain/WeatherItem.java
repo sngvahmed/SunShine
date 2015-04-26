@@ -1,33 +1,49 @@
 package com.sngv.sunshine.domain;
 
-import android.app.Activity;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.content.ContentValues;
+import android.database.Cursor;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+
+import com.sngv.sunshine.DB.WeatherDBCommon;
 
 /**
  * Created by sngv on 08/04/15.
  */
 public class WeatherItem {
-    private String day;
-    private String minGrade;
-    private String maxGrade;
-    private ImageView cloudImage;
-    private String description;
-    private String country;
-    private String columnPressure;
-    private String windSpeed;
-    private String degree;
+    private Long id;
+    private String day = "";
+    private String minGrade = "";
+    private String maxGrade = "";
+    private ImageView cloudImage = null;
+    private String description = "";
+    private String country = "";
+    private String pressure = "";
+    private String windSpeed = "";
+    private String degree = "";
+    private String humidity;
 
-    public String getColumnPressure() {
-        return columnPressure;
+    public String getHumidity() {
+        return humidity;
     }
 
-    public void setColumnPressure(String columnPressure) {
-        this.columnPressure = columnPressure;
+    public void setHumidity(String humidity) {
+        this.humidity = humidity;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPressure() {
+        return pressure;
+    }
+
+    public void setPressure(String pressure) {
+        this.pressure = pressure;
     }
 
     public String getWindSpeed() {
@@ -52,6 +68,7 @@ public class WeatherItem {
         maxGrade = Long.toString(MaxGrade);
         this.description = description;
     }
+    public WeatherItem (){}
 
     public String getDescription() {
         return description;
@@ -99,5 +116,47 @@ public class WeatherItem {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public ContentValues getContentValue(){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(WeatherDBCommon.COLUMN_DATETEXT, getDay());
+        contentValues.put(WeatherDBCommon.COLUMN_MIN_TEMP, getMinGrade());
+        contentValues.put(WeatherDBCommon.COLUMN_MAX_TEMP, getMaxGrade());
+        contentValues.put(WeatherDBCommon.COLUMN_DESC, getDescription());
+        contentValues.put(WeatherDBCommon.COLUMN_COUNTRY, getCountry());
+        contentValues.put(WeatherDBCommon.COLUMN_HUMIDITY, getHumidity());
+        contentValues.put(WeatherDBCommon.COLUMN_PRESSURE, getPressure());
+        contentValues.put(WeatherDBCommon.COLUMN_WIND_SPEED, getWindSpeed());
+        contentValues.put(WeatherDBCommon.COLUMN_DEGREES, getDegree());
+        return contentValues;
+    }
+
+    public void setFromCursor(Cursor cursor) {
+        setId(cursor.getLong(0));
+        setDay(cursor.getString(1));
+        setMinGrade(cursor.getString(2));
+        setMaxGrade(cursor.getString(3));
+        setDescription(cursor.getString(4));
+        setCountry(cursor.getString(5));
+        setHumidity(cursor.getString(6));
+        setPressure(cursor.getString(7));
+        setWindSpeed(cursor.getString(8));
+        setDegree(cursor.getString(9));
+    }
+
+    public void printThem() {
+        System.out.println(" *******************Item********************** ");
+        System.out.println("Item :: id :: " + getId());
+        System.out.println("Item :: Day ::" + getDay());
+        System.out.println("Item :: MinGrade :: " + getMinGrade());
+        System.out.println("Item :: MaxGrade :: " + getMaxGrade());
+        System.out.println("Item :: Desc :: " + getDescription());
+        System.out.println("Item :: Country :: " + getCountry());
+        System.out.println("Item :: Humidinty :: " + getHumidity());
+        System.out.println("Item :: Pressure :: " + getPressure());
+        System.out.println("Item :: WindSpeed :: " + getWindSpeed());
+        System.out.println("Item :: Degree :: " + getDegree());
+        System.out.println(" ******************Item*********************** ");
     }
 }

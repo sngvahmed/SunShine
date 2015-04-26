@@ -1,57 +1,45 @@
 package com.sngv.sunshine.DB;
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
+
+import com.sngv.sunshine.domain.WeatherItem;
+
+import java.util.ArrayList;
 
 /**
- * Created by sngv on 14/04/15.
+ * Created by sngv on 26/04/15.
  */
-public class DBController extends SQLiteOpenHelper {
+public class DBController {
+    DBHelper dbHelper;
+    Context context;
 
-    private static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "weather.db";
-
-    public DBController(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+    public DBController(Context context){
+        this.context = context;
+        dbHelper = new DBHelper(context);
     }
 
-    @Override
-    public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_LOCATION_TABLE = "CREATE TABLE " + LocationEntry.TABLE_NAME + " (" +
-                LocationEntry._ID + " INTEGER PRIMARY KEY," +
-                LocationEntry.COLUMN_LOCATION_SETTING + " TEXT UNIQUE NOT NULL, " +
-                LocationEntry.COLUMN_CITY_NAME + " TEXT NOT NULL, " +
-                LocationEntry.COLUMN_COORD_LAT + " REAL NOT NULL, " +
-                LocationEntry.COLUMN_COORD_LONG + " REAL NOT NULL, " +
-                "UNIQUE (" + LocationEntry.COLUMN_LOCATION_SETTING +") ON CONFLICT IGNORE"+
-                " );";
-
-        final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherEntry.TABLE_NAME + " (" +
-                WeatherEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                WeatherEntry.COLUMN_LOC_KEY + " INTEGER NOT NULL, " +
-                WeatherEntry.COLUMN_DATETEXT + " TEXT NOT NULL, " +
-                WeatherEntry.COLUMN_SHORT_DESC + " TEXT NOT NULL, " +
-                WeatherEntry.COLUMN_WEATHER_ID + " INTEGER NOT NULL," +
-                WeatherEntry.COLUMN_MIN_TEMP + " REAL NOT NULL, " +
-                WeatherEntry.COLUMN_MAX_TEMP + " REAL NOT NULL, " +
-                WeatherEntry.COLUMN_HUMIDITY + " REAL NOT NULL, " +
-                WeatherEntry.COLUMN_PRESSURE + " REAL NOT NULL, " +
-                WeatherEntry.COLUMN_WIND_SPEED + " REAL NOT NULL, " +
-                WeatherEntry.COLUMN_DEGREES + " REAL NOT NULL, " +
-                " FOREIGN KEY (" + WeatherEntry.COLUMN_LOC_KEY + ") REFERENCES " +
-                LocationEntry.TABLE_NAME + " (" + LocationEntry._ID + "), " +
-                " UNIQUE (" + WeatherEntry.COLUMN_DATETEXT + ", " +
-                WeatherEntry.COLUMN_LOC_KEY + ") ON CONFLICT REPLACE);";
-        sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
-        sqLiteDatabase.execSQL(SQL_CREATE_WEATHER_TABLE);
-
+    public void insertIntoWeather(WeatherItem weatherItem){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        ContentValues contentValues = weatherItem.getContentValue();
+        Long id = sqLiteDatabase.insertOrThrow(WeatherDBCommon.TABLE_NAME , null , contentValues);
+        weatherItem.setId(id);
+        sqLiteDatabase.close();
     }
 
-    @Override
-    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + LocationEntry.TABLE_NAME);
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + WeatherEntry.TABLE_NAME);
-        onCreate(sqLiteDatabase);
+    public ArrayList<WeatherItem> getAllWeatherItem(){
+        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+        Cursor cursor = sqLiteDatabase.query(WeatherDBCommon.TABLE_NAME ,WeatherDBCommon.selection , null , null , null,null,null);
+        ArrayList<WeatherItem> weathers = new ArrayList<WeatherItem>();
+        if(cursor.moveToFirst()){
+            do{
+                WeatherItem weatherItem = new WeatherItem();
+                weatherItem.setFromCursor(cursor);
+                weathers.add(weatherItem);
+            }while (cursor.moveToNext());
+        }
+        return weathers;
     }
 }

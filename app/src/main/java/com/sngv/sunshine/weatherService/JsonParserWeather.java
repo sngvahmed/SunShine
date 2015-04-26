@@ -4,6 +4,7 @@ import android.text.format.Time;
 import android.util.Log;
 
 import com.sngv.sunshine.Common.WeatherCommon;
+import com.sngv.sunshine.domain.WeatherItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -18,22 +19,26 @@ import java.util.HashMap;
  */
 public class JsonParserWeather {
 
-    final String OWM_LIST = "list";
-    final String OWM_WEATHER = "weather";
-    final String OWM_TEMPERATURE = "temp";
-    final String OWM_MAX = "max";
-    final String OWM_MIN = "min";
-    final String OWM_DESCRIPTION = "main";
-    final String OWN_CITY = "city";
+    private final String OWM_PRESSURE = "pressure";
+    private final String OWM_HUMIDITY = "humidity";
+    private final String OWM_WIND_SPEED = "speed";
+    private final String OWM_DEGREE = "deg";
+    private final String OWM_COUNTRY = "country";
+    private final String OWM_LIST = "list";
+    private final String OWM_WEATHER = "weather";
+    private final String OWM_TEMPERATURE = "temp";
+    private final String OWM_MAX = "max";
+    private final String OWM_MIN = "min";
+    private final String OWM_DESCRIPTION = "description";
+    private final String OWN_CITY = "city";
 
     private String getReadableDateString(long time){
         SimpleDateFormat shortenedDateFormat = new SimpleDateFormat("EEE MMM dd");
         return shortenedDateFormat.format(time);
     }
 
-    public ArrayList<HashMap<String,String> >  getWeatherDataFromJson(String forecastJsonStr, int numDays)
+    public ArrayList<WeatherItem>  getWeatherDataFromJson(String forecastJsonStr, int numDays)
             throws JSONException {
-
         JSONObject forecastJson = new JSONObject(forecastJsonStr);
         JSONArray weatherArray = forecastJson.getJSONArray(OWM_LIST);
         JSONObject city = forecastJson.getJSONObject(OWN_CITY);
@@ -43,27 +48,30 @@ public class JsonParserWeather {
         int julianStartDay = Time.getJulianDay(System.currentTimeMillis(), dayTime.gmtoff);
 
         dayTime = new Time();
-        ArrayList<HashMap<String,String> > res = new ArrayList<HashMap<String,String> >();
+        ArrayList<WeatherItem > res = new ArrayList<WeatherItem>();
         for(int i = 0; i < weatherArray.length(); i++) {
-            HashMap<String,String> tmp = new HashMap<String,String>();
+            WeatherItem weatherItem = new WeatherItem();
             JSONObject dayForecast = weatherArray.getJSONObject(i);
+
             long dateTime;
-
-
             dateTime = dayTime.setJulianDay(julianStartDay+i);
-            tmp.put(WeatherCommon.PARSE_DAY , getReadableDateString(dateTime));
+            weatherItem.setDay(getReadableDateString(dateTime));
+
+            weatherItem.setPressure(dayForecast.getString(OWM_PRESSURE));
+            weatherItem.setHumidity(dayForecast.getString(OWM_HUMIDITY));
+            weatherItem.setWindSpeed(dayForecast.getString(OWM_WIND_SPEED));
+            weatherItem.setDegree(dayForecast.getString(OWM_DEGREE));
+
             JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
-            tmp.put(WeatherCommon.PARSE_DESCRIPTION,weatherObject.getString(OWM_DESCRIPTION));
+            weatherItem.setDescription(weatherObject.getString(OWM_DESCRIPTION));
+
             JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
+            weatherItem.setMinGrade(temperatureObject.getString(OWM_MIN));
+            weatherItem.setMaxGrade(temperatureObject.getString(OWM_MAX));
 
-            long roundedHigh = Math.round(temperatureObject.getDouble(OWM_MAX));
-            long roundedLow = Math.round(temperatureObject.getDouble(OWM_MIN));
+            weatherItem.setCountry(city.getString(OWM_COUNTRY));
 
-            tmp.put(WeatherCommon.PARSE_HIGHT,Long.toString(roundedHigh));
-            tmp.put(WeatherCommon.PARSE_LOW,Long.toString(roundedLow));
-
-            tmp.put(WeatherCommon.PARSE_COUNTRY , city.getString("country"));
-            res.add(tmp);
+            res.add(weatherItem);
         }
 
         return res;

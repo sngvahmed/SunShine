@@ -6,9 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.sngv.sunshine.DB.DBController;
-import com.sngv.sunshine.DB.LocationEntry;
-import com.sngv.sunshine.DB.WeatherEntry;
+import com.sngv.sunshine.DB.DBHelper;
+import com.sngv.sunshine.DB.WeatherDBCommon;
 
 import java.util.Map;
 import java.util.Set;
@@ -18,8 +17,8 @@ public class TestDb extends AndroidTestCase {
     public static final String LOG_TAG = TestDb.class.getSimpleName();
 
     public void testCreateDb() throws Throwable {
-        mContext.deleteDatabase(DBController.DATABASE_NAME);
-        SQLiteDatabase db = new DBController(
+        mContext.deleteDatabase(DBHelper.DATABASE_NAME);
+        SQLiteDatabase db = new DBHelper(
                 this.mContext).getWritableDatabase();
         assertEquals(true, db.isOpen());
         db.close();
@@ -29,7 +28,7 @@ public class TestDb extends AndroidTestCase {
 
         // If there's an error in those massive SQL table creation Strings,
         // errors will be thrown here when you try to get a writable database.
-        DBController dbHelper = new DBController(mContext);
+        DBHelper dbHelper = new DBHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues testValues = createNorthPoleLocationValues();
@@ -60,12 +59,12 @@ public class TestDb extends AndroidTestCase {
         // Fantastic.  Now that we have a location, add some weather!
         ContentValues weatherValues = createWeatherValues(locationRowId);
 
-        long weatherRowId = db.insert(WeatherEntry.TABLE_NAME, null, weatherValues);
+        long weatherRowId = db.insert(WeatherDBCommon.TABLE_NAME, null, weatherValues);
         assertTrue(weatherRowId != -1);
 
         // A cursor is your primary interface to the query results.
         Cursor weatherCursor = db.query(
-                WeatherEntry.TABLE_NAME,  // Table to Query
+                WeatherDBCommon.TABLE_NAME,  // Table to Query
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
@@ -81,16 +80,16 @@ public class TestDb extends AndroidTestCase {
 
     static ContentValues createWeatherValues(long locationRowId) {
         ContentValues weatherValues = new ContentValues();
-        weatherValues.put(WeatherEntry.COLUMN_LOC_KEY, locationRowId);
-        weatherValues.put(WeatherEntry.COLUMN_DATETEXT, "20141205");
-        weatherValues.put(WeatherEntry.COLUMN_DEGREES, 1.1);
-        weatherValues.put(WeatherEntry.COLUMN_HUMIDITY, 1.2);
-        weatherValues.put(WeatherEntry.COLUMN_PRESSURE, 1.3);
-        weatherValues.put(WeatherEntry.COLUMN_MAX_TEMP, 75);
-        weatherValues.put(WeatherEntry.COLUMN_MIN_TEMP, 65);
-        weatherValues.put(WeatherEntry.COLUMN_SHORT_DESC, "Asteroids");
-        weatherValues.put(WeatherEntry.COLUMN_WIND_SPEED, 5.5);
-        weatherValues.put(WeatherEntry.COLUMN_WEATHER_ID, 321);
+        weatherValues.put(WeatherDBCommon.COLUMN_LOC_KEY, locationRowId);
+        weatherValues.put(WeatherDBCommon.COLUMN_DATETEXT, "20141205");
+        weatherValues.put(WeatherDBCommon.COLUMN_DEGREES, 1.1);
+        weatherValues.put(WeatherDBCommon.COLUMN_HUMIDITY, 1.2);
+        weatherValues.put(WeatherDBCommon.COLUMN_PRESSURE, 1.3);
+        weatherValues.put(WeatherDBCommon.COLUMN_MAX_TEMP, 75);
+        weatherValues.put(WeatherDBCommon.COLUMN_MIN_TEMP, 65);
+        weatherValues.put(WeatherDBCommon.COLUMN_SHORT_DESC, "Asteroids");
+        weatherValues.put(WeatherDBCommon.COLUMN_WIND_SPEED, 5.5);
+        weatherValues.put(WeatherDBCommon.COLUMN_WEATHER_ID, 321);
 
         return weatherValues;
     }

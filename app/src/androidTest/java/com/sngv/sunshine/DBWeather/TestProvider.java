@@ -5,27 +5,25 @@ package com.sngv.sunshine.DBWeather;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.net.Uri;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
-import com.sngv.sunshine.DB.DBController;
-import com.sngv.sunshine.DB.LocationEntry;
-import com.sngv.sunshine.DB.WeatherEntry;
+import com.sngv.sunshine.DB.DBHelper;
+import com.sngv.sunshine.DB.WeatherDBCommon;
 
 public class TestProvider extends AndroidTestCase {
 
     public static final String LOG_TAG = TestProvider.class.getSimpleName();
 
     public void testDeleteDb() throws Throwable {
-        mContext.deleteDatabase(DBController.DATABASE_NAME);
+        mContext.deleteDatabase(DBHelper.DATABASE_NAME);
     }
 
     public void testInsertReadProvider() {
 
         // If there's an error in those massive SQL table creation Strings,
         // errors will be thrown here when you try to get a writable database.
-        DBController dbHelper = new DBController(mContext);
+        DBHelper dbHelper = new DBHelper(mContext);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
 
         ContentValues testValues = TestDb.createNorthPoleLocationValues();
@@ -65,12 +63,12 @@ public class TestProvider extends AndroidTestCase {
         // Fantastic.  Now that we have a location, add some weather!
         ContentValues weatherValues = TestDb.createWeatherValues(locationRowId);
 
-        long weatherRowId = db.insert(WeatherEntry.TABLE_NAME, null, weatherValues);
+        long weatherRowId = db.insert(WeatherDBCommon.TABLE_NAME, null, weatherValues);
         assertTrue(weatherRowId != -1);
 
         // A cursor is your primary interface to the query results.
         Cursor weatherCursor = mContext.getContentResolver().query(
-                WeatherEntry.CONTENT_URI,  // Table to Query
+                WeatherDBCommon.CONTENT_URI,  // Table to Query
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
@@ -84,23 +82,23 @@ public class TestProvider extends AndroidTestCase {
 
     public void testGetType() {
         // content://com.example.android.sunshine.app/weather/
-        String type = mContext.getContentResolver().getType(WeatherEntry.CONTENT_URI);
+        String type = mContext.getContentResolver().getType(WeatherDBCommon.CONTENT_URI);
         // vnd.android.cursor.dir/com.example.android.sunshine.app/weather
-        assertEquals(WeatherEntry.CONTENT_TYPE, type);
+        assertEquals(WeatherDBCommon.CONTENT_TYPE, type);
 
         String testLocation = "94074";
         // content://com.example.android.sunshine.app/weather/94074
         type = mContext.getContentResolver().getType(
-                WeatherEntry.buildWeatherLocation(testLocation));
+                WeatherDBCommon.buildWeatherLocation(testLocation));
         // vnd.android.cursor.dir/com.example.android.sunshine.app/weather
-        assertEquals(WeatherEntry.CONTENT_TYPE, type);
+        assertEquals(WeatherDBCommon.CONTENT_TYPE, type);
 
         String testDate = "20140612";
         // content://com.example.android.sunshine.app/weather/94074/20140612
         type = mContext.getContentResolver().getType(
-                WeatherEntry.buildWeatherLocationWithDate(testLocation, testDate));
+                WeatherDBCommon.buildWeatherLocationWithDate(testLocation, testDate));
         // vnd.android.cursor.item/com.example.android.sunshine.app/weather
-        assertEquals(WeatherEntry.CONTENT_ITEM_TYPE, type);
+        assertEquals(WeatherDBCommon.CONTENT_ITEM_TYPE, type);
 
         // content://com.example.android.sunshine.app/location/
         type = mContext.getContentResolver().getType(LocationEntry.CONTENT_URI);
