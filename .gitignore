@@ -32,11 +32,12 @@ project.properties
 .project
 
 # idea project files
-.idea/
+.idea/*
 .idea/.name
 *.iml
 *.ipr
 *.iws
+.idea
 
 ##Gradle-based build
 .gradle
