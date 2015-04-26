@@ -80,63 +80,52 @@
         </LinearLayout>
     </LinearLayout>
 
+
+
+
     <LinearLayout
-        android:padding="20dp"
+        android:padding="15dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <!--description ::-->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:gravity="center_vertical"
-                android:orientation="vertical">
-
-                <TextView
-                    android:gravity="left"
-                    android:layout_gravity="left"
-                    android:textSize="20dp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/description"
-                    android:id="@+id/description_details"
-                    />
-            </LinearLayout>
-        </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:text="@string/description"
+            android:id="@+id/description_details"
+            android:gravity="left"
+            android:layout_gravity="left"
+            android:paddingBottom="10dp"
+            />
 
         <!--degree -->
         <LinearLayout
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-
                 <TextView
                     android:gravity="left"
                     android:layout_gravity="left"
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/degree"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="right" >
-
                 <TextView
                     android:textSize="20dp"
                     android:layout_width="wrap_content"
@@ -145,21 +134,21 @@
                     android:text="@string/degree"
                     android:id="@+id/degree_details"
                     />
-            </LinearLayout>
+        </LinearLayout></LinearLayout>
 
-        </LinearLayout>
 
         <!--windSpeed -->
         <LinearLayout
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-
                 <TextView
                     android:gravity="left"
                     android:layout_gravity="left"
@@ -170,7 +159,6 @@
                     android:text="@string/windSpeed"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -184,20 +172,21 @@
                     android:text="@string/windSpeed"
                     android:id="@+id/WindSpeed_details"
                     />
-            </LinearLayout>
-        </LinearLayout>
+        </LinearLayout></LinearLayout>
+
 
         <!--pressure -->
         <LinearLayout
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-
                 <TextView
                     android:gravity="left"
                     android:layout_gravity="left"
@@ -208,7 +197,6 @@
                     android:text="@string/pressure"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -222,21 +210,21 @@
                     android:text="@string/pressure"
                     android:id="@+id/pressure_details"
                 />
-            </LinearLayout>
+        </LinearLayout></LinearLayout>
 
-        </LinearLayout>
 
-        <!--pressure -->
+        <!--humidity -->
         <LinearLayout
+            android:paddingRight="15dp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:orientation="vertical">
-
                 <TextView
                     android:gravity="left"
                     android:layout_gravity="left"
@@ -247,7 +235,6 @@
                     android:text="@string/humidity"
                     />
             </LinearLayout>
-
             <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -261,8 +248,10 @@
                     android:text="@string/humidity"
                     android:id="@+id/humidity_details"
                     />
-            </LinearLayout>
-        </LinearLayout>
-        </LinearLayout>
+        </LinearLayout></LinearLayout>
+
+
+
+    </LinearLayout>
 </LinearLayout>
 

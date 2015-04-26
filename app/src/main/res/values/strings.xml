@@ -39,9 +39,9 @@
     <string name="pref_counter_Key">pref_counter</string>
     <string name="pref_counter_deafult">7</string>
     <string name="pref_counter_label">Number of forecasting</string>
-    <string name="degree">degree</string>
+    <string name="degree">Degree</string>
     <string name="windSpeed">Wind Speed</string>
-    <string name="pressure">pressure</string>
+    <string name="pressure">Pressure</string>
     <string name="humidity">Humidity</string>
 
 

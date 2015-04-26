@@ -58,8 +58,8 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7696246" vertical-offset="3524" max-vertical-offset="4110">
-              <caret line="265" column="23" selection-start-line="265" selection-start-column="23" selection-end-line="265" selection-end-column="23" />
+            <state vertical-scroll-proportion="0.6416382" vertical-offset="3359" max-vertical-offset="3945">
+              <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
               <folding>
                 <element signature="e#221#256#0" expanded="true" />
                 <element signature="e#282#317#0" expanded="true" />
@@ -68,15 +68,15 @@
                 <element signature="e#1371#1384#0" expanded="true" />
                 <element signature="e#2030#2048#0" expanded="true" />
                 <element signature="e#2495#2513#0" expanded="true" />
-                <element signature="e#4172#4193#0" expanded="true" />
-                <element signature="e#5090#5106#0" expanded="true" />
-                <element signature="e#5627#5643#0" expanded="true" />
-                <element signature="e#6539#6558#0" expanded="true" />
-                <element signature="e#7079#7098#0" expanded="true" />
-                <element signature="e#7995#8013#0" expanded="true" />
-                <element signature="e#8534#8552#0" expanded="true" />
-                <element signature="e#9445#9463#0" expanded="true" />
-                <element signature="e#9984#10002#0" expanded="true" />
+                <element signature="e#3582#3603#0" expanded="true" />
+                <element signature="e#4668#4684#0" expanded="true" />
+                <element signature="e#5203#5219#0" expanded="true" />
+                <element signature="e#6220#6239#0" expanded="true" />
+                <element signature="e#6759#6778#0" expanded="true" />
+                <element signature="e#7781#7799#0" expanded="true" />
+                <element signature="e#8319#8337#0" expanded="true" />
+                <element signature="e#9335#9353#0" expanded="true" />
+                <element signature="e#9873#9891#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -896,7 +896,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Common/WeatherUtility.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/container.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/pref_general.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/domain/LocationItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/WeatherCursorAdapter.java" />
@@ -906,12 +905,13 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/LocationItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Setting/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-1" />
+    <option name="x" value="-1367" />
     <option name="y" value="-3" />
     <option name="width" value="1368" />
     <option name="height" value="772" />
@@ -962,6 +962,24 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="res" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="SunShine" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidResFolderTypeNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -1301,7 +1319,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="-3" width="1368" height="772" extended-state="6" />
+    <frame x="-1367" y="-3" width="1368" height="772" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -1658,14 +1676,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.32876712" vertical-offset="186" max-vertical-offset="750">
-          <caret line="22" column="18" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/menu/menu_main.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.19438446" vertical-offset="0" max-vertical-offset="463">
@@ -1784,10 +1794,18 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.61604095" vertical-offset="224" max-vertical-offset="810">
+          <caret line="39" column="35" selection-start-line="39" selection-start-column="35" selection-end-line="39" selection-end-column="35" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7696246" vertical-offset="3524" max-vertical-offset="4110">
-          <caret line="265" column="23" selection-start-line="265" selection-start-column="23" selection-end-line="265" selection-end-column="23" />
+        <state vertical-scroll-proportion="0.6416382" vertical-offset="3359" max-vertical-offset="3945">
+          <caret line="249" column="22" selection-start-line="249" selection-start-column="22" selection-end-line="249" selection-end-column="22" />
           <folding>
             <element signature="e#221#256#0" expanded="true" />
             <element signature="e#282#317#0" expanded="true" />
@@ -1796,15 +1814,15 @@
             <element signature="e#1371#1384#0" expanded="true" />
             <element signature="e#2030#2048#0" expanded="true" />
             <element signature="e#2495#2513#0" expanded="true" />
-            <element signature="e#4172#4193#0" expanded="true" />
-            <element signature="e#5090#5106#0" expanded="true" />
-            <element signature="e#5627#5643#0" expanded="true" />
-            <element signature="e#6539#6558#0" expanded="true" />
-            <element signature="e#7079#7098#0" expanded="true" />
-            <element signature="e#7995#8013#0" expanded="true" />
-            <element signature="e#8534#8552#0" expanded="true" />
-            <element signature="e#9445#9463#0" expanded="true" />
-            <element signature="e#9984#10002#0" expanded="true" />
+            <element signature="e#3582#3603#0" expanded="true" />
+            <element signature="e#4668#4684#0" expanded="true" />
+            <element signature="e#5203#5219#0" expanded="true" />
+            <element signature="e#6220#6239#0" expanded="true" />
+            <element signature="e#6759#6778#0" expanded="true" />
+            <element signature="e#7781#7799#0" expanded="true" />
+            <element signature="e#8319#8337#0" expanded="true" />
+            <element signature="e#9335#9353#0" expanded="true" />
+            <element signature="e#9873#9891#0" expanded="true" />
           </folding>
         </state>
       </provider>
