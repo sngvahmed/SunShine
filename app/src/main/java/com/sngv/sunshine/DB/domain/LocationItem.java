@@ -1,6 +1,6 @@
-package com.sngv.sunshine.domain;
+package com.sngv.sunshine.DB.domain;
 
-import com.sngv.sunshine.weatherService.FetchWeatherData;
+import com.sngv.sunshine.Service.FetchData;
 
 import java.util.concurrent.ExecutionException;
 
@@ -11,9 +11,14 @@ public class LocationItem {
     private String location;
     private String counter;
     private String unitType;
-    private String data = "null";
+    private String data;
 
-    public LocationItem(){}
+    public LocationItem(){
+        location = "null";
+        counter = "null";
+        unitType = "null";
+        data = "null";
+    }
 
     public LocationItem(String location, String counter, String unitType) {
         this.location = location;
@@ -47,9 +52,9 @@ public class LocationItem {
     }
 
     public String getWeatherFromApi(LocationItem weatherItem, String counter){
-        FetchWeatherData fetchWeatherData = new FetchWeatherData();
+        FetchData fetchData = new FetchData();
         try {
-            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getLocation() ,counter).get();
+            return data = fetchData.execute(getUnitType() , weatherItem.getLocation() ,counter).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

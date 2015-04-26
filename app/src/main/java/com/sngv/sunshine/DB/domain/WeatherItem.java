@@ -1,4 +1,4 @@
-package com.sngv.sunshine.domain;
+package com.sngv.sunshine.DB.domain;
 
 import android.content.ContentValues;
 import android.database.Cursor;

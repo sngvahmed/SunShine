@@ -1,26 +1,22 @@
-package com.sngv.sunshine.weatherService;
+package com.sngv.sunshine.Controller.Main;
 
-import android.app.Activity;
 import android.content.Context;
 import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
 import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.domain.WeatherItem;
-
-import java.util.List;
+import com.sngv.sunshine.DB.domain.WeatherItem;
 
 /**
  * Created by sngv on 08/04/15.
  */
-public class WeatherCursorAdapter extends CursorAdapter {
+public class MainCursorAdapter extends CursorAdapter {
     public Context activity;
-    public WeatherCursorAdapter(Context context, Cursor c) {
+    public MainCursorAdapter(Context context, Cursor c) {
         super(context, c);
         this.activity = context;
     }

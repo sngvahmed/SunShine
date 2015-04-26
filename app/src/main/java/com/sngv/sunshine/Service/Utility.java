@@ -1,20 +1,13 @@
-package com.sngv.sunshine.weatherService;
+package com.sngv.sunshine.Service;
 
 import android.text.format.Time;
 
-import com.sngv.sunshine.domain.LocationItem;
-import com.sngv.sunshine.weatherService.FetchWeatherData;
-
 import java.text.SimpleDateFormat;
-import java.util.concurrent.ExecutionException;
 
 /**
  * Created by sngv on 08/04/15.
  */
-public class WeatherUtility {
-    public static String UnitMetric = "metric";
-    public static String UnitImperial = "imperial";
-    public static String API_WITH_CITY = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
+public class Utility {
 
     public static String getReadableDateString(long time){
         SimpleDateFormat shortenedDateFormat = new SimpleDateFormat("EEE MMM dd");

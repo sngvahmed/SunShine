@@ -5,7 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-import com.sngv.sunshine.domain.WeatherItem;
+import com.sngv.sunshine.DB.domain.WeatherItem;
 
 import java.util.ArrayList;
 

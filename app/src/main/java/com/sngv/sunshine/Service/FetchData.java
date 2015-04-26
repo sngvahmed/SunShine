@@ -1,4 +1,4 @@
-package com.sngv.sunshine.weatherService;
+package com.sngv.sunshine.Service;
 
 import android.os.AsyncTask;
 
@@ -9,10 +9,11 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class FetchWeatherData extends AsyncTask<String , Void , String> {
+public class FetchData extends AsyncTask<String , Void , String> {
     private HttpURLConnection urlConnection;
     private BufferedReader bufferedReader;
     private String forecastJsonStr;
+    private String API_WITH_CITY = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
 
 
     @Override
@@ -22,7 +23,7 @@ public class FetchWeatherData extends AsyncTask<String , Void , String> {
         String counter = params[2];
 
         try {
-            String api_url = WeatherUtility.API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt="+counter;
+            String api_url = API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt="+counter;
 
             URL url = new URL(api_url);
             urlConnection = (HttpURLConnection) url.openConnection();

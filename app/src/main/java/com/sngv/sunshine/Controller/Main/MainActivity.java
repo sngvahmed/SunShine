@@ -1,4 +1,4 @@
-package com.sngv.sunshine.Controller;
+package com.sngv.sunshine.Controller.Main;
 
 import android.content.Context;
 import android.content.Intent;
@@ -16,15 +16,13 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sngv.sunshine.weatherService.WeatherUtility;
-import com.sngv.sunshine.Controller.Details.Details_Activity;
+import com.sngv.sunshine.Service.Utility;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.DBController;
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.weatherService.WeatherCursorAdapter;
-import com.sngv.sunshine.domain.WeatherItem;
-import com.sngv.sunshine.domain.LocationItem;
-import com.sngv.sunshine.weatherService.JsonParserWeather;
+import com.sngv.sunshine.DB.domain.WeatherItem;
+import com.sngv.sunshine.DB.domain.LocationItem;
+import com.sngv.sunshine.Service.JsonParser;
 
 import org.json.JSONException;
 
@@ -36,7 +34,7 @@ public class MainActivity extends ActionBarActivity {
     private ListView listView;
     private LocationItem locationItem = new LocationItem();
     private SharedPreferences pref;
-    private WeatherUtility weatherUtility;
+    private Utility utility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +61,8 @@ public class MainActivity extends ActionBarActivity {
         if(locationItem == null)
             locationItem = new LocationItem(getLocation() , getCounter() , getUnitType());
         else{
-            if(locationItem.getCounter() != getCounter()) check = true;
+            if(!locationItem.getCounter().equals(getCounter())) check = true;
+            if(!locationItem.getUnitType().equals(getUnitType()))check = true;
             locationItem.setLocation(getLocation());
             locationItem.setCounter(getCounter());
             locationItem.setUnitType(getUnitType());
@@ -90,11 +89,11 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void retrieveFromAPI(){
-        JsonParserWeather jsonParserWeather = new JsonParserWeather();
+        JsonParser jsonParser = new JsonParser();
         String counter = locationItem.getCounter();
         String details = locationItem.getWeatherFromApi(locationItem, counter);
         try {
-            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, Integer.parseInt(counter));
+            ArrayList<WeatherItem> weatherJsonParse = jsonParser.getWeatherDataFromJson(details, Integer.parseInt(counter));
             dbController.deleteAll();
             for(WeatherItem str : weatherJsonParse){
                 dbController.insertIntoWeather(str);
@@ -108,7 +107,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void insertIntoListFromDB(){
-        WeatherCursorAdapter weatherAdapter;
+        MainCursorAdapter weatherAdapter;
         ((TextView)findViewById(R.id.City)).setText(locationItem.getLocation());
         try {
             Cursor c = dbController.getAllWeatherCursor();
@@ -120,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
                     return ;
                 }
             }
-            weatherAdapter = new WeatherCursorAdapter(this , c);
+            weatherAdapter = new MainCursorAdapter(this , c);
             listView.setAdapter(weatherAdapter);
         } catch (Exception e){
             Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
