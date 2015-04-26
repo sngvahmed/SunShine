@@ -37,7 +37,7 @@ public class MainActivity extends ActionBarActivity {
     private SharedPreferences pref;
     private Utility utility;
     private MainCursorAdapter weatherAdapter;
-
+    private WeatherItem today;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +85,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void init(){
+        today = new WeatherItem();
         pref = PreferenceManager.getDefaultSharedPreferences(this);
         listView = (ListView) findViewById(R.id.list_item_forecast);
         dbController = new DBController(this);
@@ -120,8 +121,10 @@ public class MainActivity extends ActionBarActivity {
                     return ;
                 }
             }
+            today.setFromCursor(c);
             weatherAdapter = new MainCursorAdapter(this , c);
             listView.setAdapter(weatherAdapter);
+            listView.removeViews(0,1);
         } catch (Exception e){
             Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
@@ -143,7 +146,6 @@ public class MainActivity extends ActionBarActivity {
                             .putExtra(Intent.EXTRA_TEXT, weatherItem);
                     startActivity(detailsIntent);
                 }
-
             }
         });
     }

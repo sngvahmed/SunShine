@@ -12,6 +12,9 @@
     <shared>
       <config>
         <devices>
+          <device id="Galaxy Nexus" />
+          <device id="Nexus One" />
+          <device id="Nexus 7" />
           <device id="Nexus 5" />
           <device id="Nexus S" />
         </devices>
@@ -23,10 +26,14 @@
           <theme>@style/AppTheme</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/app/src/main/res/layout/today.xml">
+        <config>
+          <theme>@style/AppTheme</theme>
+        </config>
+      </layout>
     </layouts>
   </component>
   <component name="AndroidLogFilters">
-    <option name="TOOL_WINDOW_LOG_LEVEL" value="ERROR" />
     <option name="TOOL_WINDOW_CONFIGURED_FILTER" value="app: com.sngv.sunshine" />
   </component>
   <component name="ChangeListManager">
@@ -55,61 +62,86 @@
       <file leaf-file-name="MainActivity.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2550">
-              <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="2580">
+              <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
               <folding>
-                <element signature="e#2343#2380#0" expanded="true" />
-                <element signature="e#2383#2424#0" expanded="true" />
-                <element signature="e#2498#2532#0" expanded="true" />
-                <element signature="e#2533#2570#0" expanded="true" />
-                <element signature="e#2642#2678#0" expanded="true" />
-                <element signature="e#2679#2719#0" expanded="true" />
-                <element signature="e#4655#5315#0" expanded="true" />
-                <element signature="e#5304#5305#0" expanded="true" />
-                <element signature="e#6203#6240#0" expanded="true" />
-                <element signature="e#6258#6299#0" expanded="true" />
-                <element signature="e#6348#6381#0" expanded="true" />
+                <element signature="e#2373#2410#0" expanded="true" />
+                <element signature="e#2413#2454#0" expanded="true" />
+                <element signature="e#2528#2562#0" expanded="true" />
+                <element signature="e#2563#2600#0" expanded="true" />
+                <element signature="e#2672#2708#0" expanded="true" />
+                <element signature="e#2709#2749#0" expanded="true" />
+                <element signature="e#4795#5454#0" expanded="true" />
+                <element signature="e#5443#5444#0" expanded="true" />
+                <element signature="e#6342#6379#0" expanded="true" />
+                <element signature="e#6397#6438#0" expanded="true" />
+                <element signature="e#6487#6520#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetailsFragment.java" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="MainCursorAdapter.java" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainCursorAdapter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.15869565" vertical-offset="557" max-vertical-offset="1125">
+              <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#903#904#0" expanded="true" />
+                <element signature="e#927#928#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DetailsFragment.java" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.41080198" vertical-offset="229" max-vertical-offset="960">
-              <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="229" max-vertical-offset="960">
+              <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="fragment_details_.xml" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
+      <file leaf-file-name="container.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/container.xml">
           <provider editor-type-id="android-designer">
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.6" vertical-offset="15" max-vertical-offset="3945">
-              <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+            <state vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="390">
+              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
               <folding>
-                <element signature="e#221#256#0" expanded="true" />
-                <element signature="e#282#317#0" expanded="true" />
-                <element signature="e#341#374#0" expanded="true" />
-                <element signature="e#401#434#0" expanded="true" />
-                <element signature="e#1374#1387#0" expanded="true" />
-                <element signature="e#2024#2042#0" expanded="true" />
-                <element signature="e#2489#2507#0" expanded="true" />
-                <element signature="e#3567#3588#0" expanded="true" />
-                <element signature="e#4653#4669#0" expanded="true" />
-                <element signature="e#5188#5204#0" expanded="true" />
-                <element signature="e#6205#6224#0" expanded="true" />
-                <element signature="e#6744#6763#0" expanded="true" />
-                <element signature="e#7766#7784#0" expanded="true" />
-                <element signature="e#8304#8322#0" expanded="true" />
-                <element signature="e#9320#9338#0" expanded="true" />
-                <element signature="e#9858#9876#0" expanded="true" />
+                <element signature="e#423#444#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="today.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/today.xml">
+          <provider selected="true" editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="500" max-vertical-offset="1350">
+              <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="clout_item.xml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml">
+          <provider editor-type-id="android-designer">
+            <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-7.2" vertical-offset="870" max-vertical-offset="1305">
+              <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -862,9 +894,6 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/MetriceService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/ImperialService.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/ServiceWeather.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/menu/menu_cloud.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/list_item_forecast.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/WeatherAdapter.java" />
@@ -898,8 +927,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/domain/WeatherItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/WeatherService.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Common/WeatherUtility.java" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml" />
-        <option value="$PROJECT_DIR$/app/src/main/res/layout/container.xml" />
         <option value="$PROJECT_DIR$/app/src/main/res/xml/pref_general.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/domain/LocationItem.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/weatherService/WeatherCursorAdapter.java" />
@@ -910,9 +937,14 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Setting/SettingsActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/DB/domain/WeatherItem.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/container.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/today.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/ViewHolder.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainCursorAdapter.java" />
       </list>
     </option>
   </component>
@@ -1083,32 +1115,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Main" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="SunShine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidModuleNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="java" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidSourceTypeNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="sunshine" />
-              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidPsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Details" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1345,7 +1351,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.23233908" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.47723705" sideWeight="0.5" order="15" side_tool="false" content_ui="tabs" />
-      <window_info id="Android" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24018839" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
+      <window_info id="Android" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.23704867" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32913387" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.18882175" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -1702,16 +1708,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainCursorAdapter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="367" max-vertical-offset="825">
-          <caret line="44" column="29" selection-start-line="44" selection-start-column="29" selection-end-line="44" selection-end-column="29" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Service/Utility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="91" max-vertical-offset="555">
@@ -1748,28 +1744,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.79522187" vertical-offset="719" max-vertical-offset="1305">
-          <caret line="79" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/container.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35836178" vertical-offset="0" max-vertical-offset="586">
-          <caret line="14" column="10" selection-start-line="6" selection-start-column="3" selection-end-line="14" selection-end-column="10" />
-          <folding />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.61604095" vertical-offset="224" max-vertical-offset="810">
@@ -1797,29 +1771,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="1350" max-vertical-offset="2550">
-          <caret line="145" column="0" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
-          <folding>
-            <element signature="e#2343#2380#0" expanded="true" />
-            <element signature="e#2383#2424#0" expanded="true" />
-            <element signature="e#2498#2532#0" expanded="true" />
-            <element signature="e#2533#2570#0" expanded="true" />
-            <element signature="e#2642#2678#0" expanded="true" />
-            <element signature="e#2679#2719#0" expanded="true" />
-            <element signature="e#4655#5315#0" expanded="true" />
-            <element signature="e#5304#5305#0" expanded="true" />
-            <element signature="e#6203#6240#0" expanded="true" />
-            <element signature="e#6258#6299#0" expanded="true" />
-            <element signature="e#6348#6381#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/fragment_details_.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.6" vertical-offset="15" max-vertical-offset="3945">
+        <state vertical-scroll-proportion="0.7274827" vertical-offset="15" max-vertical-offset="3945">
           <caret line="22" column="32" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
           <folding>
             <element signature="e#221#256#0" expanded="true" />
@@ -1845,11 +1799,78 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/container.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2" vertical-offset="0" max-vertical-offset="390">
+          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#423#444#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/clout_item.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.2" vertical-offset="870" max-vertical-offset="1305">
+          <caret line="70" column="38" selection-start-line="70" selection-start-column="38" selection-end-line="70" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/today.xml">
+      <provider selected="true" editor-type-id="android-designer">
+        <state />
+      </provider>
+      <provider editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="500" max-vertical-offset="1350">
+          <caret line="37" column="43" selection-start-line="37" selection-start-column="43" selection-end-line="37" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Details/DetailsFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.41080198" vertical-offset="229" max-vertical-offset="960">
-          <caret line="41" column="70" selection-start-line="41" selection-start-column="70" selection-end-line="41" selection-end-column="70" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="229" max-vertical-offset="960">
+          <caret line="43" column="30" selection-start-line="43" selection-start-column="30" selection-end-line="43" selection-end-column="30" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="260" max-vertical-offset="2580">
+          <caret line="52" column="0" selection-start-line="52" selection-start-column="0" selection-end-line="52" selection-end-column="0" />
+          <folding>
+            <element signature="e#2373#2410#0" expanded="true" />
+            <element signature="e#2413#2454#0" expanded="true" />
+            <element signature="e#2528#2562#0" expanded="true" />
+            <element signature="e#2563#2600#0" expanded="true" />
+            <element signature="e#2672#2708#0" expanded="true" />
+            <element signature="e#2709#2749#0" expanded="true" />
+            <element signature="e#4795#5454#0" expanded="true" />
+            <element signature="e#5443#5444#0" expanded="true" />
+            <element signature="e#6342#6379#0" expanded="true" />
+            <element signature="e#6397#6438#0" expanded="true" />
+            <element signature="e#6487#6520#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/sngv/sunshine/Controller/Main/MainCursorAdapter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.15869565" vertical-offset="557" max-vertical-offset="1125">
+          <caret line="42" column="0" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#903#904#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
