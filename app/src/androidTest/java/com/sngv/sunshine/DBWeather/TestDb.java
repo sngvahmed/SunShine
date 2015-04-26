@@ -6,8 +6,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
+import com.sngv.sunshine.DB.DBCommon;
 import com.sngv.sunshine.DB.DBHelper;
-import com.sngv.sunshine.DB.WeatherDBCommon;
 
 import java.util.Map;
 import java.util.Set;
@@ -59,12 +59,12 @@ public class TestDb extends AndroidTestCase {
         // Fantastic.  Now that we have a location, add some weather!
         ContentValues weatherValues = createWeatherValues(locationRowId);
 
-        long weatherRowId = db.insert(WeatherDBCommon.TABLE_NAME, null, weatherValues);
+        long weatherRowId = db.insert(DBCommon.TABLE_NAME, null, weatherValues);
         assertTrue(weatherRowId != -1);
 
         // A cursor is your primary interface to the query results.
         Cursor weatherCursor = db.query(
-                WeatherDBCommon.TABLE_NAME,  // Table to Query
+                DBCommon.TABLE_NAME,  // Table to Query
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
@@ -80,16 +80,16 @@ public class TestDb extends AndroidTestCase {
 
     static ContentValues createWeatherValues(long locationRowId) {
         ContentValues weatherValues = new ContentValues();
-        weatherValues.put(WeatherDBCommon.COLUMN_LOC_KEY, locationRowId);
-        weatherValues.put(WeatherDBCommon.COLUMN_DATETEXT, "20141205");
-        weatherValues.put(WeatherDBCommon.COLUMN_DEGREES, 1.1);
-        weatherValues.put(WeatherDBCommon.COLUMN_HUMIDITY, 1.2);
-        weatherValues.put(WeatherDBCommon.COLUMN_PRESSURE, 1.3);
-        weatherValues.put(WeatherDBCommon.COLUMN_MAX_TEMP, 75);
-        weatherValues.put(WeatherDBCommon.COLUMN_MIN_TEMP, 65);
-        weatherValues.put(WeatherDBCommon.COLUMN_SHORT_DESC, "Asteroids");
-        weatherValues.put(WeatherDBCommon.COLUMN_WIND_SPEED, 5.5);
-        weatherValues.put(WeatherDBCommon.COLUMN_WEATHER_ID, 321);
+        weatherValues.put(DBCommon.COLUMN_LOC_KEY, locationRowId);
+        weatherValues.put(DBCommon.COLUMN_DATETEXT, "20141205");
+        weatherValues.put(DBCommon.COLUMN_DEGREES, 1.1);
+        weatherValues.put(DBCommon.COLUMN_HUMIDITY, 1.2);
+        weatherValues.put(DBCommon.COLUMN_PRESSURE, 1.3);
+        weatherValues.put(DBCommon.COLUMN_MAX_TEMP, 75);
+        weatherValues.put(DBCommon.COLUMN_MIN_TEMP, 65);
+        weatherValues.put(DBCommon.COLUMN_SHORT_DESC, "Asteroids");
+        weatherValues.put(DBCommon.COLUMN_WIND_SPEED, 5.5);
+        weatherValues.put(DBCommon.COLUMN_WEATHER_ID, 321);
 
         return weatherValues;
     }

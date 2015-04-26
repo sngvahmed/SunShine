@@ -12,20 +12,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.sngv.sunshine.weatherService.WeatherUtility;
 import com.sngv.sunshine.Controller.Details.Details_Activity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.DBController;
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.weatherService.WeatherAdapter;
+import com.sngv.sunshine.weatherService.WeatherCursorAdapter;
 import com.sngv.sunshine.domain.WeatherItem;
 import com.sngv.sunshine.domain.LocationItem;
 import com.sngv.sunshine.weatherService.JsonParserWeather;
-import com.sngv.sunshine.weatherService.WeatherService;
 
 import org.json.JSONException;
 
@@ -34,13 +33,10 @@ import java.util.ArrayList;
 
 public class MainActivity extends ActionBarActivity {
     private DBController dbController;
-    private ArrayAdapter<String> weathers_adapter ;
-    private WeatherAdapter weatherAdapter;
-    private WeatherService weatherService;
     private ListView listView;
-    private LocationItem LocationItem = new LocationItem();
-    private JsonParserWeather jsonParserWeather;
+    private LocationItem locationItem = new LocationItem();
     private SharedPreferences pref;
+    private WeatherUtility weatherUtility;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,34 +59,42 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void updateSetting(){
-        String location = pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
-        if(LocationItem == null)
-            LocationItem = new LocationItem(location);
-        else
-            LocationItem.setPATH_LOCATION(location);
-        weatherService.setUnitType(getUnitType());
+        boolean check = false;
+        if(locationItem == null)
+            locationItem = new LocationItem(getLocation() , getCounter() , getUnitType());
+        else{
+            if(locationItem.getCounter() != getCounter()) check = true;
+            locationItem.setLocation(getLocation());
+            locationItem.setCounter(getCounter());
+            locationItem.setUnitType(getUnitType());
+        }
+        if(check)retrieveFromAPI();
+    }
+
+    public String getLocation(){
+        return pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
     }
 
     public String getUnitType(){
-        return pref.getString( getString(R.string.pref_units_key),
-                getString(R.string.pref_units_metric));
+        return pref.getString( getString(R.string.pref_units_key),getString(R.string.pref_units_metric));
+    }
+
+    public String getCounter(){
+        return pref.getString(getString(R.string.pref_counter_Key),getString(R.string.pref_counter_deafult));
     }
 
     public void init(){
         pref = PreferenceManager.getDefaultSharedPreferences(this);
-        weatherService = new WeatherService(getUnitType());
         listView = (ListView) findViewById(R.id.list_item_forecast);
-        jsonParserWeather = new JsonParserWeather();
         dbController = new DBController(this);
     }
 
-
-
     public void retrieveFromAPI(){
-        int counter = 10;
-        String details = weatherService.getWeatherFromApi(LocationItem , counter);
+        JsonParserWeather jsonParserWeather = new JsonParserWeather();
+        String counter = locationItem.getCounter();
+        String details = locationItem.getWeatherFromApi(locationItem, counter);
         try {
-            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, counter);
+            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, Integer.parseInt(counter));
             dbController.deleteAll();
             for(WeatherItem str : weatherJsonParse){
                 dbController.insertIntoWeather(str);
@@ -104,9 +108,9 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void insertIntoListFromDB(){
-        ((TextView)findViewById(R.id.City)).setText("NO Country Found");
+        WeatherCursorAdapter weatherAdapter;
+        ((TextView)findViewById(R.id.City)).setText(locationItem.getLocation());
         try {
-            String city = "no Country found";
             Cursor c = dbController.getAllWeatherCursor();
             if (!c.moveToFirst()){
                 retrieveFromAPI();
@@ -116,9 +120,8 @@ public class MainActivity extends ActionBarActivity {
                     return ;
                 }
             }
-            weatherAdapter = new WeatherAdapter(this , c);
+            weatherAdapter = new WeatherCursorAdapter(this , c);
             listView.setAdapter(weatherAdapter);
-            ((TextView)findViewById(R.id.City)).setText(city);
         } catch (Exception e){
             Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
@@ -132,8 +135,8 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                final Intent detailsIntent = new Intent(con, Details_Activity.class).putExtra(Intent.EXTRA_TEXT , weatherService.getData());
-                startActivity(detailsIntent);
+//                final Intent detailsIntent = new Intent(con, Details_Activity.class).putExtra(Intent.EXTRA_TEXT , locationItem.getData());
+//                startActivity(detailsIntent);
             }
         });
     }
@@ -165,6 +168,7 @@ public class MainActivity extends ActionBarActivity {
                 getString(R.string.pref_location_key),
                 getString(R.string.pref_location_default)
                 );
+
         Uri uri = Uri.parse(getString(R.string.location_site)).buildUpon().
                       appendQueryParameter("q", location).build();
 

@@ -18,9 +18,9 @@ import java.util.List;
 /**
  * Created by sngv on 08/04/15.
  */
-public class WeatherAdapter extends CursorAdapter {
+public class WeatherCursorAdapter extends CursorAdapter {
     public Context activity;
-    public WeatherAdapter(Context context, Cursor c) {
+    public WeatherCursorAdapter(Context context, Cursor c) {
         super(context, c);
         this.activity = context;
     }
@@ -42,8 +42,8 @@ public class WeatherAdapter extends CursorAdapter {
         WeatherItem weatherItem = new WeatherItem();
         weatherItem.setFromCursor(cursor);
         day.setText(weatherItem.getDay());
-        minGrade.setText("min : " + weatherItem.getMinGrade());
-        maxGrade.setText("max : " + weatherItem.getMaxGrade());
+        minGrade.setText("min : " + weatherItem.getMinGrade() + "°");
+        maxGrade.setText("max : " + weatherItem.getMaxGrade() + "°");
         description.setText(weatherItem.getDescription());
     }
 }

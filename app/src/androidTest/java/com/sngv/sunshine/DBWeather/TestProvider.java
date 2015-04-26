@@ -8,8 +8,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.test.AndroidTestCase;
 import android.util.Log;
 
+import com.sngv.sunshine.DB.DBCommon;
 import com.sngv.sunshine.DB.DBHelper;
-import com.sngv.sunshine.DB.WeatherDBCommon;
 
 public class TestProvider extends AndroidTestCase {
 
@@ -63,12 +63,12 @@ public class TestProvider extends AndroidTestCase {
         // Fantastic.  Now that we have a location, add some weather!
         ContentValues weatherValues = TestDb.createWeatherValues(locationRowId);
 
-        long weatherRowId = db.insert(WeatherDBCommon.TABLE_NAME, null, weatherValues);
+        long weatherRowId = db.insert(DBCommon.TABLE_NAME, null, weatherValues);
         assertTrue(weatherRowId != -1);
 
         // A cursor is your primary interface to the query results.
         Cursor weatherCursor = mContext.getContentResolver().query(
-                WeatherDBCommon.CONTENT_URI,  // Table to Query
+                DBCommon.CONTENT_URI,  // Table to Query
                 null, // leaving "columns" null just returns all the columns.
                 null, // cols for "where" clause
                 null, // values for "where" clause
@@ -82,23 +82,23 @@ public class TestProvider extends AndroidTestCase {
 
     public void testGetType() {
         // content://com.example.android.sunshine.app/weather/
-        String type = mContext.getContentResolver().getType(WeatherDBCommon.CONTENT_URI);
+        String type = mContext.getContentResolver().getType(DBCommon.CONTENT_URI);
         // vnd.android.cursor.dir/com.example.android.sunshine.app/weather
-        assertEquals(WeatherDBCommon.CONTENT_TYPE, type);
+        assertEquals(DBCommon.CONTENT_TYPE, type);
 
         String testLocation = "94074";
         // content://com.example.android.sunshine.app/weather/94074
         type = mContext.getContentResolver().getType(
-                WeatherDBCommon.buildWeatherLocation(testLocation));
+                DBCommon.buildWeatherLocation(testLocation));
         // vnd.android.cursor.dir/com.example.android.sunshine.app/weather
-        assertEquals(WeatherDBCommon.CONTENT_TYPE, type);
+        assertEquals(DBCommon.CONTENT_TYPE, type);
 
         String testDate = "20140612";
         // content://com.example.android.sunshine.app/weather/94074/20140612
         type = mContext.getContentResolver().getType(
-                WeatherDBCommon.buildWeatherLocationWithDate(testLocation, testDate));
+                DBCommon.buildWeatherLocationWithDate(testLocation, testDate));
         // vnd.android.cursor.item/com.example.android.sunshine.app/weather
-        assertEquals(WeatherDBCommon.CONTENT_ITEM_TYPE, type);
+        assertEquals(DBCommon.CONTENT_ITEM_TYPE, type);
 
         // content://com.example.android.sunshine.app/location/
         type = mContext.getContentResolver().getType(LocationEntry.CONTENT_URI);

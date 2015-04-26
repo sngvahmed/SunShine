@@ -18,24 +18,24 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
-        final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + WeatherDBCommon.TABLE_NAME + " (" +
-                WeatherDBCommon._id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
-                WeatherDBCommon.COLUMN_DATETEXT + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_MIN_TEMP + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_MAX_TEMP + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_HUMIDITY + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_PRESSURE + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_WIND_SPEED + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_DESC + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_COUNTRY + " TEXT NOT NULL, " +
-                WeatherDBCommon.COLUMN_DEGREES + " TEXT NOT NULL)";
+        final String SQL_CREATE_WEATHER_TABLE = "CREATE TABLE " + DBCommon.TABLE_NAME + " (" +
+                DBCommon._id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                DBCommon.COLUMN_DATETEXT + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_MIN_TEMP + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_MAX_TEMP + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_HUMIDITY + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_PRESSURE + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_WIND_SPEED + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_DESC + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_COUNTRY + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_DEGREES + " TEXT NOT NULL)";
 
         sqLiteDatabase.execSQL(SQL_CREATE_WEATHER_TABLE);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int oldVersion, int newVersion) {
-        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + WeatherDBCommon.TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + DBCommon.TABLE_NAME);
         onCreate(sqLiteDatabase);
     }
 }

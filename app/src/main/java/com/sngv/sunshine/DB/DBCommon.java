@@ -7,7 +7,7 @@ import android.provider.BaseColumns;
 /**
  * Created by Android @Udacity_Android
  */
-public class WeatherDBCommon {
+public class DBCommon {
     public static final String PATH_WEATHER = "weather";
     public static final String PATH_LOCATION = "location";
     public static final String TABLE_NAME = "weather";

@@ -2,15 +2,12 @@ package com.sngv.sunshine.weatherService;
 
 import android.text.format.Time;
 
-import com.sngv.sunshine.Common.WeatherUtility;
-import com.sngv.sunshine.DB.WeatherDBCommon;
 import com.sngv.sunshine.domain.WeatherItem;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**

@@ -1,69 +1,61 @@
 package com.sngv.sunshine.domain;
 
+import com.sngv.sunshine.weatherService.FetchWeatherData;
+
+import java.util.concurrent.ExecutionException;
+
 /**
  * Created by sngv on 09/04/15.
  */
 public class LocationItem {
-    private String PATH_LOCATION;
-    private String postalCode;
-    private String CONTENT_AUTHORITY;
-    private String PATH_WEATHER;
-    private String COLUMN_COORD_LAT;
-    private String COLUMN_COORD_LONG;
+    private String location;
+    private String counter;
+    private String unitType;
+    private String data = "null";
 
-    public String getCONTENT_AUTHORITY() {
-        return CONTENT_AUTHORITY;
+    public LocationItem(){}
+
+    public LocationItem(String location, String counter, String unitType) {
+        this.location = location;
+        this.counter = counter;
+        this.unitType = unitType;
     }
 
-    public void setCONTENT_AUTHORITY(String CONTENT_AUTHORITY) {
-        this.CONTENT_AUTHORITY = CONTENT_AUTHORITY;
+    public String getLocation() {
+        location = location.substring(0,1).toUpperCase() + location.substring(1,location.length());
+        return location;
     }
 
-    public String getPATH_WEATHER() {
-        return PATH_WEATHER;
+    public String getUnitType() {
+        return unitType;
     }
 
-    public void setPATH_WEATHER(String PATH_WEATHER) {
-        this.PATH_WEATHER = PATH_WEATHER;
+    public void setUnitType(String unitType) {
+        this.unitType = unitType;
     }
 
-    public String getCOLUMN_COORD_LAT() {
-        return COLUMN_COORD_LAT;
+    public String getCounter() {
+        return counter;
     }
 
-    public void setCOLUMN_COORD_LAT(String COLUMN_COORD_LAT) {
-        this.COLUMN_COORD_LAT = COLUMN_COORD_LAT;
+    public void setCounter(String counter) {
+        this.counter = counter;
     }
 
-    public String getCOLUMN_COORD_LONG() {
-        return COLUMN_COORD_LONG;
+    public void setLocation(String location) {
+        this.location = location;
     }
 
-    public void setCOLUMN_COORD_LONG(String COLUMN_COORD_LONG) {
-        this.COLUMN_COORD_LONG = COLUMN_COORD_LONG;
+    public String getWeatherFromApi(LocationItem weatherItem, String counter){
+        FetchWeatherData fetchWeatherData = new FetchWeatherData();
+        try {
+            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getLocation() ,counter).get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        return "City unfound";
     }
 
-    public LocationItem(){
-        PATH_LOCATION = "Egypt";
-    }
-
-    public LocationItem(String PATHLOCATION) {
-        PATH_LOCATION = PATHLOCATION;
-    }
-
-    public String getPATH_LOCATION() {
-        return PATH_LOCATION;
-    }
-
-    public void setPATH_LOCATION(String PATH_LOCATION) {
-        this.PATH_LOCATION = PATH_LOCATION;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
 }

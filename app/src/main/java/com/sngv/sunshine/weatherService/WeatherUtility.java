@@ -1,8 +1,12 @@
-package com.sngv.sunshine.Common;
+package com.sngv.sunshine.weatherService;
 
 import android.text.format.Time;
 
+import com.sngv.sunshine.domain.LocationItem;
+import com.sngv.sunshine.weatherService.FetchWeatherData;
+
 import java.text.SimpleDateFormat;
+import java.util.concurrent.ExecutionException;
 
 /**
  * Created by sngv on 08/04/15.
@@ -26,4 +30,5 @@ public class WeatherUtility {
         String current_day = getReadableDateString(dateTime);
         return current_day.equals(date);
     }
+
 }

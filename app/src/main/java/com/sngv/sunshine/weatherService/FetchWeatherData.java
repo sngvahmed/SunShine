@@ -2,8 +2,6 @@ package com.sngv.sunshine.weatherService;
 
 import android.os.AsyncTask;
 
-import com.sngv.sunshine.Common.WeatherUtility;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;

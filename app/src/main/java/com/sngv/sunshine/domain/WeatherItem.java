@@ -4,7 +4,7 @@ import android.content.ContentValues;
 import android.database.Cursor;
 import android.widget.ImageView;
 
-import com.sngv.sunshine.DB.WeatherDBCommon;
+import com.sngv.sunshine.DB.DBCommon;
 
 /**
  * Created by sngv on 08/04/15.
@@ -120,29 +120,29 @@ public class WeatherItem {
 
     public ContentValues getContentValue(){
         ContentValues contentValues = new ContentValues();
-        contentValues.put(WeatherDBCommon.COLUMN_DATETEXT, getDay());
-        contentValues.put(WeatherDBCommon.COLUMN_MIN_TEMP, getMinGrade());
-        contentValues.put(WeatherDBCommon.COLUMN_MAX_TEMP, getMaxGrade());
-        contentValues.put(WeatherDBCommon.COLUMN_DESC, getDescription());
-        contentValues.put(WeatherDBCommon.COLUMN_COUNTRY, getCountry());
-        contentValues.put(WeatherDBCommon.COLUMN_HUMIDITY, getHumidity());
-        contentValues.put(WeatherDBCommon.COLUMN_PRESSURE, getPressure());
-        contentValues.put(WeatherDBCommon.COLUMN_WIND_SPEED, getWindSpeed());
-        contentValues.put(WeatherDBCommon.COLUMN_DEGREES, getDegree());
+        contentValues.put(DBCommon.COLUMN_DATETEXT, getDay());
+        contentValues.put(DBCommon.COLUMN_MIN_TEMP, getMinGrade());
+        contentValues.put(DBCommon.COLUMN_MAX_TEMP, getMaxGrade());
+        contentValues.put(DBCommon.COLUMN_DESC, getDescription());
+        contentValues.put(DBCommon.COLUMN_COUNTRY, getCountry());
+        contentValues.put(DBCommon.COLUMN_HUMIDITY, getHumidity());
+        contentValues.put(DBCommon.COLUMN_PRESSURE, getPressure());
+        contentValues.put(DBCommon.COLUMN_WIND_SPEED, getWindSpeed());
+        contentValues.put(DBCommon.COLUMN_DEGREES, getDegree());
         return contentValues;
     }
 
     public void setFromCursor(Cursor cursor) {
-        setId(cursor.getLong(cursor.getColumnIndex(WeatherDBCommon._id)));
-        setDay(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DATETEXT)));
-        setMinGrade(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_MIN_TEMP)));
-        setMaxGrade(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_MAX_TEMP)));
-        setHumidity(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_HUMIDITY)));
-        setPressure(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_PRESSURE)));
-        setWindSpeed(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_WIND_SPEED)));;
-        setDescription(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DESC)));
-        setCountry(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_COUNTRY)));
-        setDegree(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DEGREES)));
+        setId(cursor.getLong(cursor.getColumnIndex(DBCommon._id)));
+        setDay(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_DATETEXT)));
+        setMinGrade(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_MIN_TEMP)));
+        setMaxGrade(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_MAX_TEMP)));
+        setHumidity(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_HUMIDITY)));
+        setPressure(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_PRESSURE)));
+        setWindSpeed(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_WIND_SPEED)));;
+        setDescription(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_DESC)));
+        setCountry(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_COUNTRY)));
+        setDegree(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_DEGREES)));
     }
 
     public void printThem() {

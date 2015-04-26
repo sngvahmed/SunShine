@@ -24,14 +24,14 @@ public class DBController {
     public void insertIntoWeather(WeatherItem weatherItem){
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
         ContentValues contentValues = weatherItem.getContentValue();
-        Long id = sqLiteDatabase.insertOrThrow(WeatherDBCommon.TABLE_NAME , null , contentValues);
+        Long id = sqLiteDatabase.insertOrThrow(DBCommon.TABLE_NAME , null , contentValues);
         weatherItem.setId(id);
         sqLiteDatabase.close();
     }
 
     public ArrayList<WeatherItem> getAllWeatherItem(){
         SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-        Cursor cursor = sqLiteDatabase.query(WeatherDBCommon.TABLE_NAME ,WeatherDBCommon.selection , null , null , null,null,null);
+        Cursor cursor = sqLiteDatabase.query(DBCommon.TABLE_NAME , DBCommon.selection , null , null , null,null,null);
         ArrayList<WeatherItem> weathers = new ArrayList<WeatherItem>();
         if(cursor.moveToFirst()){
             do{
@@ -45,12 +45,12 @@ public class DBController {
 
     public Cursor getAllWeatherCursor(){
        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-       Cursor cur =  sqLiteDatabase.rawQuery("select rowid _id,* from " + WeatherDBCommon.TABLE_NAME, null);
+       Cursor cur =  sqLiteDatabase.rawQuery("select rowid _id,* from " + DBCommon.TABLE_NAME, null);
        return cur;
     }
 
     public void deleteAll() {
         SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
-        sqLiteDatabase.execSQL("delete from "+ WeatherDBCommon.TABLE_NAME);
+        sqLiteDatabase.execSQL("delete from "+ DBCommon.TABLE_NAME);
     }
 }
