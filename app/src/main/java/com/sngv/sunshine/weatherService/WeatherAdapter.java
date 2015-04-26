@@ -34,10 +34,11 @@ public class WeatherAdapter extends CursorAdapter {
 
     @Override
     public void bindView(View convertView, Context context, Cursor cursor) {
-        TextView day = (TextView) convertView.findViewById(R.id.day);
-        TextView minGrade = (TextView) convertView.findViewById(R.id.minGrade);
-        TextView maxGrade = (TextView) convertView.findViewById(R.id.maxGrade);
-        TextView description = (TextView) convertView.findViewById(R.id.description);
+        TextView day = (TextView) convertView.findViewById(R.id.day_cloudItem);
+        TextView minGrade = (TextView) convertView.findViewById(R.id.minGrade_cloudItem);
+        TextView maxGrade = (TextView) convertView.findViewById(R.id.maxGrade_cloudItem);
+        TextView description = (TextView) convertView.findViewById(R.id.description_cloudItem);
+
         WeatherItem weatherItem = new WeatherItem();
         weatherItem.setFromCursor(cursor);
         day.setText(weatherItem.getDay());

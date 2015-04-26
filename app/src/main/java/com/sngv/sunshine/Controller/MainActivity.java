@@ -30,7 +30,6 @@ import com.sngv.sunshine.weatherService.WeatherService;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -54,7 +53,7 @@ public class MainActivity extends ActionBarActivity {
 
     private void updateWeather() {
         updateSetting();
-        updateWeatherNetwork();
+        insertIntoListFromDB();
     }
 
     @Override
@@ -87,51 +86,41 @@ public class MainActivity extends ActionBarActivity {
 
 
 
-    public void updateWeatherAPI(){
-//        List<WeatherItem> cloutItem = new ArrayList<WeatherItem>();
-//        cloutItem.clear();
-//        String details = weatherService.getWeatherFromApi(LocationItem);
-//        ((TextView)findViewById(R.id.City)).setText("NO Country Found");
-//        try {
-//            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
-//            String city = "no Country found";
-//            for(WeatherItem str : weatherJsonParse){
-//                str.printThem();
-//                city = str.getCountry();
-//                cloutItem.add(str);
-//                weatherAdapter = new WeatherAdapter(this , cloutItem);
-//                listView.setAdapter(weatherAdapter);
-//                dbController.insertIntoWeather(str);
-//            }
-//            ((TextView)findViewById(R.id.City)).setText(city);
-//        } catch (JSONException e) {
-//            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
-//        } catch (Exception e){
-//            e.printStackTrace();
-//        }
+    public void retrieveFromAPI(){
+        int counter = 10;
+        String details = weatherService.getWeatherFromApi(LocationItem , counter);
+        try {
+            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, counter);
+            dbController.deleteAll();
+            for(WeatherItem str : weatherJsonParse){
+                dbController.insertIntoWeather(str);
+            }
+            insertIntoListFromDB();
+        } catch (JSONException e) {
+            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+        } catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
-    public void updateWeatherNetwork(){
-        List<WeatherItem> cloutItem = new ArrayList<WeatherItem>();
-        cloutItem.clear();
-        String details = weatherService.getWeatherFromApi(LocationItem);
+    public void insertIntoListFromDB(){
         ((TextView)findViewById(R.id.City)).setText("NO Country Found");
         try {
             String city = "no Country found";
             Cursor c = dbController.getAllWeatherCursor();
+            if (!c.moveToFirst()){
+                retrieveFromAPI();
+                c = dbController.getAllWeatherCursor();
+                if(!c.moveToFirst()){
+                    Toast.makeText(MainActivity.this, "Check your Connection" , Toast.LENGTH_LONG).show();
+                    return ;
+                }
+            }
             weatherAdapter = new WeatherAdapter(this , c);
-//            for(WeatherItem str : weatherJsonParse){
-//                str.printThem();
-//                city = str.getCountry();
-//                cloutItem.add(str);
-//                weatherAdapter = new WeatherAdapter(this , cloutItem);
-//                listView.setAdapter(weatherAdapter);
-//                dbController.insertIntoWeather(str);
-//            }
             listView.setAdapter(weatherAdapter);
             ((TextView)findViewById(R.id.City)).setText(city);
         } catch (Exception e){
-            Toast.makeText(MainActivity.this, "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -164,6 +153,8 @@ public class MainActivity extends ActionBarActivity {
             return true;
         }else if (id == R.id.action_map){
             openPreferredLocationInMap();
+        }else if (id == R.id.action_refresh){
+            retrieveFromAPI();
         }
         return super.onOptionsItemSelected(item);
     }

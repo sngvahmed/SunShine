@@ -1,21 +1,14 @@
 package com.sngv.sunshine.weatherService;
 
-import android.app.Activity;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.preference.PreferenceManager;
-import android.util.Log;
 
-import com.sngv.sunshine.Common.WeatherCommon;
-import com.sngv.sunshine.R;
+import com.sngv.sunshine.Common.WeatherUtility;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
 import java.net.URL;
 
 public class FetchWeatherData extends AsyncTask<String , Void , String> {
@@ -28,9 +21,10 @@ public class FetchWeatherData extends AsyncTask<String , Void , String> {
     protected String doInBackground(String... params) {
         String unit = params[0];
         String City = params[1];
+        String counter = params[2];
 
         try {
-            String api_url = WeatherCommon.API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt=7";
+            String api_url = WeatherUtility.API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt="+counter;
 
             URL url = new URL(api_url);
             urlConnection = (HttpURLConnection) url.openConnection();

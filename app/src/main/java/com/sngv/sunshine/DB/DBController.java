@@ -45,8 +45,12 @@ public class DBController {
 
     public Cursor getAllWeatherCursor(){
        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-       Cursor cur =  sqLiteDatabase.rawQuery( "select rowid _id,* from " + WeatherDBCommon.TABLE_NAME, null);
+       Cursor cur =  sqLiteDatabase.rawQuery("select rowid _id,* from " + WeatherDBCommon.TABLE_NAME, null);
        return cur;
     }
 
+    public void deleteAll() {
+        SQLiteDatabase sqLiteDatabase = dbHelper.getWritableDatabase();
+        sqLiteDatabase.execSQL("delete from "+ WeatherDBCommon.TABLE_NAME);
+    }
 }

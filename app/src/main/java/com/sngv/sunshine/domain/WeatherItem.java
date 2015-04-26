@@ -133,16 +133,16 @@ public class WeatherItem {
     }
 
     public void setFromCursor(Cursor cursor) {
-        setId(cursor.getLong(0));
-        setDay(cursor.getString(1));
-        setMinGrade(cursor.getString(2));
-        setMaxGrade(cursor.getString(3));
-        setDescription(cursor.getString(4));
-        setCountry(cursor.getString(5));
-        setHumidity(cursor.getString(6));
-        setPressure(cursor.getString(7));
-        setWindSpeed(cursor.getString(8));
-        setDegree(cursor.getString(9));
+        setId(cursor.getLong(cursor.getColumnIndex(WeatherDBCommon._id)));
+        setDay(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DATETEXT)));
+        setMinGrade(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_MIN_TEMP)));
+        setMaxGrade(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_MAX_TEMP)));
+        setHumidity(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_HUMIDITY)));
+        setPressure(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_PRESSURE)));
+        setWindSpeed(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_WIND_SPEED)));;
+        setDescription(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DESC)));
+        setCountry(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_COUNTRY)));
+        setDegree(cursor.getString(cursor.getColumnIndex(WeatherDBCommon.COLUMN_DEGREES)));
     }
 
     public void printThem() {

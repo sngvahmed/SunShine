@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/day"
-                    android:id="@+id/day"
+                    android:id="@+id/day_cloudItem"
                     />
                 <TextView
                     android:paddingLeft="15dp"
@@ -34,7 +34,7 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/description"
-                    android:id="@+id/description"
+                    android:id="@+id/description_cloudItem"
                     />
             </LinearLayout>
 
@@ -49,14 +49,14 @@
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/maxGrade"
-                    android:id="@+id/maxGrade" />
+                    android:id="@+id/maxGrade_cloudItem" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:text="@string/minGrade"
-                    android:id="@+id/minGrade"
+                    android:id="@+id/minGrade_cloudItem"
                     android:paddingLeft="10dp"
                     />
             </LinearLayout>
@@ -81,30 +81,5 @@
                 />
         </LinearLayout>
     </LinearLayout>
-
-
-
-
-    <!--<LinearLayout-->
-        <!--android:id="@+id/linearLayout1"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical" android:layout_weight="1">-->
-
-        <!--<Button-->
-            <!--android:id="@+id/button2"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Button" />-->
-
-
-        <!--<Button-->
-            <!--android:id="@+id/button1"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:text="Button" />-->
-
-    <!--</LinearLayout>-->
-
 
 </LinearLayout>

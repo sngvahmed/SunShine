@@ -23,10 +23,10 @@ public class WeatherService {
         this.unitType = unitType;
     }
 
-    public String getWeatherFromApi(LocationItem weatherItem){
+    public String getWeatherFromApi(LocationItem weatherItem, int counter){
         FetchWeatherData fetchWeatherData = new FetchWeatherData();
         try {
-            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getPATH_LOCATION()).get();
+            return data = fetchWeatherData.execute(getUnitType() , weatherItem.getPATH_LOCATION() , Integer.toString(counter)).get();
         } catch (InterruptedException e) {
             e.printStackTrace();
         } catch (ExecutionException e) {

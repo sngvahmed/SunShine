@@ -1,9 +1,9 @@
 package com.sngv.sunshine.weatherService;
 
 import android.text.format.Time;
-import android.util.Log;
 
-import com.sngv.sunshine.Common.WeatherCommon;
+import com.sngv.sunshine.Common.WeatherUtility;
+import com.sngv.sunshine.DB.WeatherDBCommon;
 import com.sngv.sunshine.domain.WeatherItem;
 
 import org.json.JSONArray;
@@ -12,7 +12,6 @@ import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 
 /**
  * Created by sngv on 09/04/15.
@@ -32,10 +31,7 @@ public class JsonParserWeather {
     private final String OWM_DESCRIPTION = "description";
     private final String OWN_CITY = "city";
 
-    private String getReadableDateString(long time){
-        SimpleDateFormat shortenedDateFormat = new SimpleDateFormat("EEE MMM dd");
-        return shortenedDateFormat.format(time);
-    }
+
 
     public ArrayList<WeatherItem>  getWeatherDataFromJson(String forecastJsonStr, int numDays)
             throws JSONException {
@@ -55,7 +51,7 @@ public class JsonParserWeather {
 
             long dateTime;
             dateTime = dayTime.setJulianDay(julianStartDay+i);
-            weatherItem.setDay(getReadableDateString(dateTime));
+            weatherItem.setDay(WeatherUtility.getReadableDateString(dateTime));
 
             weatherItem.setPressure(dayForecast.getString(OWM_PRESSURE));
             weatherItem.setHumidity(dayForecast.getString(OWM_HUMIDITY));

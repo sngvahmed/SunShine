@@ -24,8 +24,14 @@ public class WeatherDBCommon {
 
     public static final String[] selection = {
             _id,
-            COLUMN_DATETEXT, COLUMN_MIN_TEMP , COLUMN_MAX_TEMP, COLUMN_HUMIDITY ,
-            COLUMN_PRESSURE , COLUMN_WIND_SPEED , COLUMN_DESC , COLUMN_COUNTRY ,
+            COLUMN_DATETEXT,
+            COLUMN_MIN_TEMP ,
+            COLUMN_MAX_TEMP,
+            COLUMN_HUMIDITY ,
+            COLUMN_PRESSURE ,
+            COLUMN_WIND_SPEED ,
+            COLUMN_DESC ,
+            COLUMN_COUNTRY ,
             COLUMN_DEGREES
     };
 }
