@@ -11,8 +11,8 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_vertical"
             android:orientation="vertical">
 
@@ -22,30 +22,28 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/day"
+                android:textSize="20dp"
                 android:id="@+id/day_cloudItem"
                 />
 
-
-            <LinearLayout
-                android:layout_width="match_parent"
+            <TextView
+                android:paddingLeft="20dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="@string/maxGrade"
+                android:textSize="15dp"
+                android:id="@+id/maxGrade_cloudItem" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceMedium"
-                    android:text="@string/maxGrade"
-                    android:id="@+id/maxGrade_cloudItem" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceSmall"
-                    android:text="@string/minGrade"
-                    android:id="@+id/minGrade_cloudItem"
-                    />
-            </LinearLayout>
+            <TextView
+                android:paddingLeft="20dp"
+                android:textSize="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="@string/minGrade"
+                android:id="@+id/minGrade_cloudItem"
+                />
         </LinearLayout>
 
 
@@ -60,14 +58,15 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/CloudImage"
-                android:src="@drawable/cloud_image"
+                android:id="@+id/CloudImage_cloudItem"
+                android:src="@drawable/ic_light_clouds"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 />
 
             <TextView
                 android:textAlignment="gravity"
+                android:paddingRight="10dp"
                 android:gravity="right"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

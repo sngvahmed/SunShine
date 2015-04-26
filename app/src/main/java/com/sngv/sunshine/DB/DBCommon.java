@@ -20,6 +20,7 @@ public class DBCommon {
     public static final String COLUMN_WIND_SPEED = "wind";
     public static final String COLUMN_DEGREES = "degrees";
     public static final String COLUMN_DESC = "description";
+    public static final String COLUMN_TEMP_ID = "tempdegree";
     public static final String _id= "id";
 
     public static final String[] selection = {
@@ -32,7 +33,8 @@ public class DBCommon {
             COLUMN_WIND_SPEED ,
             COLUMN_DESC ,
             COLUMN_COUNTRY ,
-            COLUMN_DEGREES
+            COLUMN_DEGREES ,
+            COLUMN_TEMP_ID
     };
 }
 

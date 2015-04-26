@@ -23,7 +23,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/day"
                 android:id="@+id/day_mainActivity"
-                android:textSize="55dp"
+                android:textSize="35dp"
                 />
 
 
@@ -35,7 +35,7 @@
                 <TextView
                     android:paddingLeft="15dp"
                     android:layout_width="wrap_content"
-                    android:textSize="45dp"
+                    android:textSize="25dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/maxGrade"
@@ -43,7 +43,7 @@
 
                 <TextView
                     android:paddingLeft="15dp"
-                    android:textSize="40dp"
+                    android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
@@ -65,8 +65,8 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/CloudImage"
-                android:src="@drawable/cloud_image"
+                android:id="@+id/CloudImage_mainActitivty"
+                android:src="@drawable/ic_fog"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 />
@@ -74,6 +74,7 @@
             <TextView
                 android:textAlignment="center"
                 android:gravity="right"
+                android:paddingRight="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"

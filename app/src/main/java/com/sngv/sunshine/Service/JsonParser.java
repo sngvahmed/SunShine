@@ -57,6 +57,7 @@ public class JsonParser {
 
             JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
             weatherItem.setDescription(weatherObject.getString(OWM_DESCRIPTION));
+            weatherItem.setTempId(weatherObject.getString("id"));
 
             JSONObject temperatureObject = dayForecast.getJSONObject(OWM_TEMPERATURE);
             weatherItem.setMinGrade(temperatureObject.getString(OWM_MIN));

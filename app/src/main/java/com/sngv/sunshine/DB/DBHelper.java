@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class DBHelper extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
     public static final String DATABASE_NAME = "weather.db";
 
     public DBHelper(Context context) {
@@ -22,6 +22,7 @@ public class DBHelper extends SQLiteOpenHelper {
                 DBCommon._id + " INTEGER PRIMARY KEY AUTOINCREMENT," +
                 DBCommon.COLUMN_DATETEXT + " TEXT NOT NULL, " +
                 DBCommon.COLUMN_MIN_TEMP + " TEXT NOT NULL, " +
+                DBCommon.COLUMN_TEMP_ID + " TEXT NOT NULL, " +
                 DBCommon.COLUMN_MAX_TEMP + " TEXT NOT NULL, " +
                 DBCommon.COLUMN_HUMIDITY + " TEXT NOT NULL, " +
                 DBCommon.COLUMN_PRESSURE + " TEXT NOT NULL, " +

@@ -71,8 +71,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/CloudImage"
-                android:src="@drawable/cloud_image"
+                android:id="@+id/CloudImage_details"
                 android:layout_alignParentRight="true"
                 android:layout_gravity="right"
                 />

@@ -13,16 +13,25 @@ import java.io.Serializable;
  */
 public class WeatherItem implements Serializable{
     private Long id;
-    private String day = "";
-    private String minGrade = "";
-    private String maxGrade = "";
+    private String day = "null";
+    private String minGrade = "null";
+    private String maxGrade = "null";
     private ImageView cloudImage = null;
-    private String description = "";
-    private String country = "";
-    private String pressure = "";
-    private String windSpeed = "";
-    private String degree = "";
-    private String humidity;
+    private String description = "null";
+    private String country = "null";
+    private String pressure = "null";
+    private String windSpeed = "null";
+    private String degree = "null";
+    private String humidity = "null";
+    private String tempId = "null";
+
+    public String getTempId() {
+        return tempId;
+    }
+
+    public void setTempId(String tempId) {
+        this.tempId = tempId;
+    }
 
     public String getHumidity() {
         return humidity;
@@ -131,6 +140,7 @@ public class WeatherItem implements Serializable{
         contentValues.put(DBCommon.COLUMN_PRESSURE, getPressure());
         contentValues.put(DBCommon.COLUMN_WIND_SPEED, getWindSpeed());
         contentValues.put(DBCommon.COLUMN_DEGREES, getDegree());
+        contentValues.put(DBCommon.COLUMN_TEMP_ID, getTempId());
         return contentValues;
     }
 
@@ -145,6 +155,7 @@ public class WeatherItem implements Serializable{
         setDescription(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_DESC)));
         setCountry(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_COUNTRY)));
         setDegree(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_DEGREES)));
+        setTempId(cursor.getString(cursor.getColumnIndex(DBCommon.COLUMN_TEMP_ID)));
     }
 
     public void printThem() {
@@ -159,6 +170,7 @@ public class WeatherItem implements Serializable{
         System.out.println("Item :: Pressure :: " + getPressure());
         System.out.println("Item :: WindSpeed :: " + getWindSpeed());
         System.out.println("Item :: Degree :: " + getDegree());
+        System.out.println("Item :: weatherID :: " + getTempId());
         System.out.println(" ******************Item*********************** ");
     }
 }

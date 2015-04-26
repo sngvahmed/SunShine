@@ -38,6 +38,7 @@ public class MainActivity extends ActionBarActivity {
     private Utility utility;
     private MainCursorAdapter weatherAdapter;
     private WeatherItem today;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,8 +104,9 @@ public class MainActivity extends ActionBarActivity {
             }
             insertIntoListFromDB();
         } catch (JSONException e) {
-            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
         } catch (Exception e){
+            //Toast.makeText(MainActivity.this, "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -117,7 +119,7 @@ public class MainActivity extends ActionBarActivity {
                 retrieveFromAPI();
                 c = dbController.getAllWeatherCursor();
                 if(!c.moveToFirst()){
-                    Toast.makeText(MainActivity.this, "Check your Connection" , Toast.LENGTH_LONG).show();
+//                    Toast.makeText(MainActivity.this, "Check your Connection" , Toast.LENGTH_LONG).show();
                     return ;
                 }
             }
@@ -126,7 +128,7 @@ public class MainActivity extends ActionBarActivity {
             listView.setAdapter(weatherAdapter);
             listView.removeViews(0,1);
         } catch (Exception e){
-            Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
+            //Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
