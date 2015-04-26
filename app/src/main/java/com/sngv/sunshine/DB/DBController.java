@@ -42,4 +42,11 @@ public class DBController {
         }
         return weathers;
     }
+
+    public Cursor getAllWeatherCursor(){
+       SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
+       Cursor cur =  sqLiteDatabase.rawQuery( "select rowid _id,* from " + WeatherDBCommon.TABLE_NAME, null);
+       return cur;
+    }
+
 }

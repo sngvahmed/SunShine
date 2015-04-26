@@ -2,10 +2,12 @@ package com.sngv.sunshine.weatherService;
 
 import android.app.Activity;
 import android.content.Context;
+import android.database.Cursor;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CursorAdapter;
 import android.widget.TextView;
 
 import com.sngv.sunshine.R;
@@ -16,51 +18,31 @@ import java.util.List;
 /**
  * Created by sngv on 08/04/15.
  */
-public class WeatherAdapter extends BaseAdapter {
-
-    private Activity activity;
-    private LayoutInflater inflater;
-    private List<WeatherItem> weatherItemList;
-
-    public WeatherAdapter(Activity activity , List<WeatherItem> weatherItem){
-        weatherItemList = weatherItem;
-        this.activity = activity;
-    }
-
-    public WeatherAdapter(){}
-
-    @Override
-    public int getCount() {
-        return weatherItemList.size();
+public class WeatherAdapter extends CursorAdapter {
+    public Context activity;
+    public WeatherAdapter(Context context, Cursor c) {
+        super(context, c);
+        this.activity = context;
     }
 
     @Override
-    public Object getItem(int position) {
-        return weatherItemList.get(position);
+    public View newView(Context context, Cursor cursor, ViewGroup parent) {
+        LayoutInflater inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View convertView = convertView = inflater.inflate(R.layout.clout_item, null);
+        return convertView;
     }
 
     @Override
-    public long getItemId(int position) {
-        return position;
-    }
-
-    @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
-        if (inflater == null)
-            inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        if (convertView == null)
-            convertView = inflater.inflate(R.layout.clout_item, null);
-
+    public void bindView(View convertView, Context context, Cursor cursor) {
         TextView day = (TextView) convertView.findViewById(R.id.day);
         TextView minGrade = (TextView) convertView.findViewById(R.id.minGrade);
         TextView maxGrade = (TextView) convertView.findViewById(R.id.maxGrade);
         TextView description = (TextView) convertView.findViewById(R.id.description);
-
-        WeatherItem weatherItem = weatherItemList.get(position);
+        WeatherItem weatherItem = new WeatherItem();
+        weatherItem.setFromCursor(cursor);
         day.setText(weatherItem.getDay());
         minGrade.setText("min : " + weatherItem.getMinGrade());
         maxGrade.setText("max : " + weatherItem.getMaxGrade());
         description.setText(weatherItem.getDescription());
-        return convertView;
     }
 }

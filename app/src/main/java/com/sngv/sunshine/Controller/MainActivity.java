@@ -3,6 +3,7 @@ package com.sngv.sunshine.Controller;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.net.Uri;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarActivity;
@@ -86,29 +87,55 @@ public class MainActivity extends ActionBarActivity {
 
 
 
+    public void updateWeatherAPI(){
+//        List<WeatherItem> cloutItem = new ArrayList<WeatherItem>();
+//        cloutItem.clear();
+//        String details = weatherService.getWeatherFromApi(LocationItem);
+//        ((TextView)findViewById(R.id.City)).setText("NO Country Found");
+//        try {
+//            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
+//            String city = "no Country found";
+//            for(WeatherItem str : weatherJsonParse){
+//                str.printThem();
+//                city = str.getCountry();
+//                cloutItem.add(str);
+//                weatherAdapter = new WeatherAdapter(this , cloutItem);
+//                listView.setAdapter(weatherAdapter);
+//                dbController.insertIntoWeather(str);
+//            }
+//            ((TextView)findViewById(R.id.City)).setText(city);
+//        } catch (JSONException e) {
+//            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+//        } catch (Exception e){
+//            e.printStackTrace();
+//        }
+    }
+
     public void updateWeatherNetwork(){
         List<WeatherItem> cloutItem = new ArrayList<WeatherItem>();
         cloutItem.clear();
         String details = weatherService.getWeatherFromApi(LocationItem);
         ((TextView)findViewById(R.id.City)).setText("NO Country Found");
         try {
-            ArrayList<WeatherItem> weatherJsonParse = jsonParserWeather.getWeatherDataFromJson(details, 7);
             String city = "no Country found";
-            for(WeatherItem str : weatherJsonParse){
-                str.printThem();
-                city = str.getCountry();
-                cloutItem.add(str);
-                weatherAdapter = new WeatherAdapter(this , cloutItem);
-                listView.setAdapter(weatherAdapter);
-                dbController.insertIntoWeather(str);
-            }
+            Cursor c = dbController.getAllWeatherCursor();
+            weatherAdapter = new WeatherAdapter(this , c);
+//            for(WeatherItem str : weatherJsonParse){
+//                str.printThem();
+//                city = str.getCountry();
+//                cloutItem.add(str);
+//                weatherAdapter = new WeatherAdapter(this , cloutItem);
+//                listView.setAdapter(weatherAdapter);
+//                dbController.insertIntoWeather(str);
+//            }
+            listView.setAdapter(weatherAdapter);
             ((TextView)findViewById(R.id.City)).setText(city);
-        } catch (JSONException e) {
-            Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
         } catch (Exception e){
+            Toast.makeText(MainActivity.this, "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
+
 
     public void onClickListnerInit(){
         final Context con = this;
