@@ -8,12 +8,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.Service.Utility;
 
-public class DetailsFragment extends Fragment {
+public class DetailFragment extends Fragment {
+
+    public DetailFragment() {
+    }
+
     static String status = "true";
     private WeatherItem weatherItem;
     private TextView country , day , min , max;
@@ -22,14 +27,11 @@ public class DetailsFragment extends Fragment {
 
     private View view;
 
-    public DetailsFragment() {
-    }
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         status = "true";
-        view = inflater.inflate(R.layout.fragment_details_, container, false);
+        view = inflater.inflate(R.layout.details_fragment, container, false);
         getExtra();
         init();
         setItem();
@@ -67,6 +69,7 @@ public class DetailsFragment extends Fragment {
     private void getExtra() {
         Intent intent = getActivity().getIntent();
         if(intent == null || !intent.hasExtra(Intent.EXTRA_TEXT)){
+            Toast.makeText(getActivity(), "no intent :D ", Toast.LENGTH_LONG).show();
             return ;
         }
         weatherItem = (WeatherItem) intent.getSerializableExtra(Intent.EXTRA_TEXT);

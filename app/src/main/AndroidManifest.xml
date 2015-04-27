@@ -11,7 +11,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name=".Controller.Main.MainActivity"
+            android:name=".Controller.Main.Main"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,20 +20,16 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controller.Details.Details_Activity"
-            android:label="@string/title_activity_details_"
-            android:parentActivityName=".Controller.Main.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Controller.Main.MainActivity" />
-        </activity>
-        <activity
             android:name=".Controller.Setting.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".Controller.Main.MainActivity" >
+            android:parentActivityName=".Controller.Main.Main" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value=".Controller.Main.MainActivity" />
+                android:value=".Controller.Main.Main" />
+        </activity>
+        <activity
+            android:name=".Controller.Details.DetailActivity"
+            android:label="@string/title_activity_details" >
         </activity>
     </application>
 

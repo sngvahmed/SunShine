@@ -1,4 +1,4 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/container"
+    xmlns:tools="http://schemas.android.com/tools" android:id="@+id/details_activity"
     android:layout_width="match_parent" android:layout_height="match_parent"
-    tools:context="com.sngv.sunshine.Controller.Details.Details_Activity" tools:ignore="MergeRootFrame" />
+    tools:context="com.sngv.sunshine.Controller.Details.DetailActivity" tools:ignore="MergeRootFrame" />

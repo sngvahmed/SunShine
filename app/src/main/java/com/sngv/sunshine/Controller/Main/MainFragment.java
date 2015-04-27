@@ -6,31 +6,30 @@ import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarActivity;
+import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.view.Menu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.sngv.sunshine.Controller.Details.Details_Activity;
-import com.sngv.sunshine.Service.Utility;
+import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.DBController;
-import com.sngv.sunshine.R;
-import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.DB.domain.LocationItem;
+import com.sngv.sunshine.DB.domain.WeatherItem;
+import com.sngv.sunshine.R;
 import com.sngv.sunshine.Service.JsonParser;
+import com.sngv.sunshine.Service.Utility;
 
 import org.json.JSONException;
 
 import java.util.ArrayList;
 
-
-public class MainActivity extends ActionBarActivity {
+public class MainFragment extends Fragment {
     private DBController dbController;
     private ListView listView;
     private LocationItem locationItem = new LocationItem();
@@ -38,25 +37,25 @@ public class MainActivity extends ActionBarActivity {
     private Utility utility;
     private MainCursorAdapter weatherAdapter;
     private WeatherItem today;
+    private View view;
+
+    public MainFragment() {
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.container);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.main_fragment, container, false);
         init();
         onClickListnerInit();
         updateWeather();
+        return view;
     }
+
 
     private void updateWeather() {
         updateSetting();
         insertIntoListFromDB();
-    }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        updateWeather();
     }
 
     public void updateSetting(){
@@ -87,9 +86,9 @@ public class MainActivity extends ActionBarActivity {
 
     public void init(){
         today = new WeatherItem();
-        pref = PreferenceManager.getDefaultSharedPreferences(this);
-        listView = (ListView) findViewById(R.id.list_item_forecast);
-        dbController = new DBController(this);
+        pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
+        listView = (ListView) view.findViewById(R.id.list_item_forecast);
+        dbController = new DBController(getActivity());
     }
 
     public void retrieveFromAPI(){
@@ -112,7 +111,7 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void insertIntoListFromDB(){
-        ((TextView)findViewById(R.id.City)).setText(locationItem.getLocation());
+        ((TextView)view.findViewById(R.id.City)).setText(locationItem.getLocation());
         try {
             Cursor c = dbController.getAllWeatherCursor();
             if (!c.moveToFirst()){
@@ -124,7 +123,7 @@ public class MainActivity extends ActionBarActivity {
                 }
             }
             today.setFromCursor(c);
-            weatherAdapter = new MainCursorAdapter(this , c);
+            weatherAdapter = new MainCursorAdapter(getActivity() , c);
             listView.setAdapter(weatherAdapter);
             listView.removeViews(0,1);
         } catch (Exception e){
@@ -135,7 +134,7 @@ public class MainActivity extends ActionBarActivity {
 
 
     public void onClickListnerInit(){
-        final Context con = this;
+        final Context con = this.getActivity();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
@@ -144,7 +143,7 @@ public class MainActivity extends ActionBarActivity {
                 if(cursor != null && cursor.moveToPosition(position)){
                     WeatherItem weatherItem = new WeatherItem();
                     weatherItem.setFromCursor(cursor);
-                    final Intent detailsIntent = new Intent(con, Details_Activity.class)
+                    final Intent detailsIntent = new Intent(con , DetailActivity.class)
                             .putExtra(Intent.EXTRA_TEXT, weatherItem);
                     startActivity(detailsIntent);
                 }
@@ -152,17 +151,12 @@ public class MainActivity extends ActionBarActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(MainActivity.this , SettingsActivity.class);
+            Intent intent = new Intent(getActivity() , SettingsActivity.class);
             startActivity(intent);
             return true;
         }else if (id == R.id.action_map){
@@ -174,22 +168,21 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private void openPreferredLocationInMap() {
-        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         String location = sharedPref.getString(
                 getString(R.string.pref_location_key),
                 getString(R.string.pref_location_default)
-                );
+        );
 
         Uri uri = Uri.parse(getString(R.string.location_site)).buildUpon().
-                      appendQueryParameter("q", location).build();
+                appendQueryParameter("q", location).build();
 
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(uri);
 
-        if(intent.resolveActivity(getPackageManager()) != null){
+        if(intent.resolveActivity(getActivity().getPackageManager()) != null){
             startActivity(intent);
         }
     }
-
 
 }

@@ -45,4 +45,6 @@
     <string name="humidity">Humidity</string>
 
     <string name="format_temperature"><xliff:g id="temp">%1.0f</xliff:g>\u00B0</string>
+    <string name="title_activity_main">Main</string>
+    <string name="title_activity_details">Details</string>
 </resources>
