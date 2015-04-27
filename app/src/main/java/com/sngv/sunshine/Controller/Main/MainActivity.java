@@ -28,6 +28,11 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
         if (findViewById(R.id.details_activity) != null) {
             mTwoPane = true;
         } else {
+            if (savedInstanceState == null) {
+                getSupportFragmentManager().beginTransaction()
+                        .add(R.id.main_activity, new MainFragment())
+                        .commit();
+            }
             mTwoPane = false;
         }
     }
