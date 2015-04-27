@@ -20,7 +20,7 @@ public class DetailFragment extends Fragment {
     }
 
     static String status = "true";
-    private WeatherItem weatherItem;
+    private WeatherItem weatherItem = null;
     private TextView country , day , min , max;
     private TextView desc , speed , pressure , humidity , degree;
     private ImageView imageView;
@@ -66,11 +66,18 @@ public class DetailFragment extends Fragment {
 
     private void getExtra() {
         Intent intent = getActivity().getIntent();
-        if(intent == null || !intent.hasExtra(Intent.EXTRA_TEXT)){
-            Toast.makeText(getActivity(), "no intent :D ", Toast.LENGTH_LONG).show();
-            return ;
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            weatherItem = (WeatherItem) bundle.getSerializable(DetailActivity.DATE_KEY);
         }
-        weatherItem = (WeatherItem) intent.getSerializableExtra(Intent.EXTRA_TEXT);
+
+        if(weatherItem == null && intent != null){
+            weatherItem = (WeatherItem) intent.getSerializableExtra(Intent.EXTRA_TEXT);
+        }
+        if(weatherItem == null){
+            Toast.makeText(getActivity() , "error on data transfer" , Toast.LENGTH_LONG).show();
+            return;
+        }
         init();
         setItem();
     }

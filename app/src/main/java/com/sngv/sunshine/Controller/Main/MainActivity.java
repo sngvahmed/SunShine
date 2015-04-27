@@ -20,17 +20,17 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_activity);
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.main_activity, new MainFragment())
-//                    .commit();
-//        }
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.main_activity, new MainFragment())
+                    .commit();
+        }
         if (findViewById(R.id.details_activity) != null) {
-            if (savedInstanceState == null) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.details_activity, new DetailFragment())
-                        .commit();
-            }
+//            if (savedInstanceState == null) {
+//                getSupportFragmentManager().beginTransaction()
+//                        .replace(R.id.details_activity, new DetailFragment())
+//                        .commit();
+//            }
         } else {
             mTwoPane = false;
         }
@@ -61,9 +61,6 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
     @Override
     public void onItemSelect(WeatherItem weatherItem) {
         if (mTwoPane) {
-            // In two-pane mode, show the detail view in this activity by
-            // adding or replacing the detail fragment using a
-            // fragment transaction.
             Bundle args = new Bundle();
             args.putSerializable(DetailActivity.DATE_KEY, weatherItem);
 
