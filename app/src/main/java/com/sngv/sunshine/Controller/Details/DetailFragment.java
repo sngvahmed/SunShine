@@ -33,8 +33,6 @@ public class DetailFragment extends Fragment {
         status = "true";
         view = inflater.inflate(R.layout.details_fragment, container, false);
         getExtra();
-        init();
-        setItem();
         return view;
     }
 
@@ -73,5 +71,7 @@ public class DetailFragment extends Fragment {
             return ;
         }
         weatherItem = (WeatherItem) intent.getSerializableExtra(Intent.EXTRA_TEXT);
+        init();
+        setItem();
     }
 }

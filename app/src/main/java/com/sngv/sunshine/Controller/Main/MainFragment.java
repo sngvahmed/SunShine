@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
@@ -23,6 +24,7 @@ import com.sngv.sunshine.DB.domain.LocationItem;
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.Service.JsonParser;
+import com.sngv.sunshine.Service.MultiPanelLisnter;
 import com.sngv.sunshine.Service.Utility;
 
 import org.json.JSONException;
@@ -143,9 +145,10 @@ public class MainFragment extends Fragment {
                 if(cursor != null && cursor.moveToPosition(position)){
                     WeatherItem weatherItem = new WeatherItem();
                     weatherItem.setFromCursor(cursor);
-                    final Intent detailsIntent = new Intent(con , DetailActivity.class)
-                            .putExtra(Intent.EXTRA_TEXT, weatherItem);
-                    startActivity(detailsIntent);
+//                    final Intent detailsIntent = new Intent(con , DetailActivity.class)
+//                            .putExtra(Intent.EXTRA_TEXT, weatherItem);
+//                    startActivity(detailsIntent);
+                    ((MultiPanelLisnter)getActivity()).onItemSelect(weatherItem);
                 }
             }
         });

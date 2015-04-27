@@ -19,6 +19,8 @@ import com.sngv.sunshine.R;
 
 public class DetailActivity extends ActionBarActivity {
 
+    public static final String DATE_KEY = "KEY_DATE_DETAILS";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
