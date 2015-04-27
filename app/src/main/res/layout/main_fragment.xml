@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main_fragment"
+    android:background="#da532c"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
