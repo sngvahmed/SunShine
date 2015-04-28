@@ -10,7 +10,7 @@
         android:layout_gravity="top"
         android:text="@string/hello_world"
         android:textAlignment="gravity"
-        android:textSize="50dp"
+        android:textSize="50sp"
         android:id="@+id/City"
         />
     <ListView
