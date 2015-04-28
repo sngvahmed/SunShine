@@ -35,6 +35,11 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
             }
             mTwoPane = false;
         }
+        MainFragment mainFragment = ((MainFragment)getSupportFragmentManager().findFragmentById(R.id.main_activity));
+        if(mainFragment != null){
+            mainFragment.setmUseTodayLayout(!mTwoPane);
+        }
+
     }
 
     @Override

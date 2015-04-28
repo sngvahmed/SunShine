@@ -21,6 +21,7 @@ public class MainCursorAdapter extends CursorAdapter {
     private Context context;
     private final int VIEW_TYPE_TODAY = 0;
     private final int VIEW_TYPE_FORECAST = 1;
+    private boolean mUseTodayLayout = true;
 
     public MainCursorAdapter(Context context, Cursor c) {
         super(context, c);
@@ -29,7 +30,7 @@ public class MainCursorAdapter extends CursorAdapter {
 
     @Override
     public int getItemViewType(int position) {
-        return (position == 0) ? VIEW_TYPE_TODAY : VIEW_TYPE_FORECAST;
+        return (position == 0 && mUseTodayLayout) ? VIEW_TYPE_TODAY : VIEW_TYPE_FORECAST;
     }
 
     @Override
@@ -77,5 +78,9 @@ public class MainCursorAdapter extends CursorAdapter {
             ((ImageView)convertView.findViewById(R.id.CloudImage_cloudItem)).
                     setImageResource(Utility.getIconResourceForWeatherCondition(Integer.parseInt(weatherItem.getTempId())));
         }
+    }
+
+    public void setmUseTodayLayout(boolean mUseTodayLayout) {
+        this.mUseTodayLayout = mUseTodayLayout;
     }
 }

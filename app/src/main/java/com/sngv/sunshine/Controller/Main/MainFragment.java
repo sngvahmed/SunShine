@@ -40,6 +40,9 @@ public class MainFragment extends Fragment {
     private MainCursorAdapter weatherAdapter;
     private WeatherItem today;
     private View view;
+    private String POSITION_KEY = "position_key";
+    private int position = -1;
+    private boolean mUseTodayLayout = true;
 
     public MainFragment() {
     }
@@ -51,6 +54,11 @@ public class MainFragment extends Fragment {
         init();
         onClickListnerInit();
         updateWeather();
+        if(savedInstanceState != null && savedInstanceState.containsKey(POSITION_KEY)){
+            position = savedInstanceState.getInt(POSITION_KEY);
+            listView.smoothScrollToPosition(position);
+            listView.setSelection(position);
+        }
         return view;
     }
 
@@ -93,6 +101,13 @@ public class MainFragment extends Fragment {
         dbController = new DBController(getActivity());
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        if(position != -1)
+            outState.putInt(POSITION_KEY , position);
+        super.onSaveInstanceState(outState);
+    }
+
     public void retrieveFromAPI(){
         JsonParser jsonParser = new JsonParser();
         String counter = locationItem.getCounter();
@@ -127,6 +142,7 @@ public class MainFragment extends Fragment {
             }
             today.setFromCursor(c);
             weatherAdapter = new MainCursorAdapter(getActivity() , c);
+            weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
             listView.setAdapter(weatherAdapter);
         } catch (Exception e){
             //Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
@@ -140,13 +156,14 @@ public class MainFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
 
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void onItemClick(AdapterView<?> parent, View view, int cPosition, long id) {
                 Cursor cursor = weatherAdapter.getCursor();
-                if(cursor != null && cursor.moveToPosition(position)){
+                if(cursor != null && cursor.moveToPosition(cPosition)){
                     WeatherItem weatherItem = new WeatherItem();
                     weatherItem.setFromCursor(cursor);
                     ((MultiPanelLisnter)getActivity()).onItemSelect(weatherItem);
                 }
+                position = cPosition;
             }
         });
     }
@@ -185,4 +202,10 @@ public class MainFragment extends Fragment {
         }
     }
 
+    public void setmUseTodayLayout(boolean mUseTodayLayout) {
+        this.mUseTodayLayout = mUseTodayLayout;
+        if(weatherAdapter != null){
+            weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
+        }
+    }
 }
