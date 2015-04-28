@@ -98,16 +98,17 @@ public class MainFragment extends Fragment {
         String counter = locationItem.getCounter();
         String details = locationItem.getWeatherFromApi(locationItem, counter);
         try {
-            ArrayList<WeatherItem> weatherJsonParse = jsonParser.getWeatherDataFromJson(details, Integer.parseInt(counter));
+            ArrayList<WeatherItem> weathers = jsonParser.getWeatherDataFromJson(details, Integer.parseInt(counter));
             dbController.deleteAll();
-            for(WeatherItem str : weatherJsonParse){
+            for(WeatherItem str : weathers){
                 dbController.insertIntoWeather(str);
             }
             insertIntoListFromDB();
         } catch (JSONException e) {
-            //Toast.makeText(MainActivity.this, "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         } catch (Exception e){
-            //Toast.makeText(MainActivity.this, "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            Toast.makeText(getActivity(), "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -127,7 +128,6 @@ public class MainFragment extends Fragment {
             today.setFromCursor(c);
             weatherAdapter = new MainCursorAdapter(getActivity() , c);
             listView.setAdapter(weatherAdapter);
-            listView.removeViews(0,1);
         } catch (Exception e){
             //Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
@@ -145,9 +145,6 @@ public class MainFragment extends Fragment {
                 if(cursor != null && cursor.moveToPosition(position)){
                     WeatherItem weatherItem = new WeatherItem();
                     weatherItem.setFromCursor(cursor);
-//                    final Intent detailsIntent = new Intent(con , DetailActivity.class)
-//                            .putExtra(Intent.EXTRA_TEXT, weatherItem);
-//                    startActivity(detailsIntent);
                     ((MultiPanelLisnter)getActivity()).onItemSelect(weatherItem);
                 }
             }

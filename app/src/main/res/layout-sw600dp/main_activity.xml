@@ -8,6 +8,7 @@
     tools:context="com.sngv.sunshine.Controller.Main.MainActivity">
     <fragment
         android:id="@+id/main_activity"
+        tools:context="com.sngv.sunshine.Controller.Main.MainFragment"
         android:name="com.sngv.sunshine.Controller.Main.MainFragment"
         android:layout_width="0dp"
         android:layout_height="match_parent"
