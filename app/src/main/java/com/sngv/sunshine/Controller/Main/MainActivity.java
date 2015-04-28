@@ -34,6 +34,7 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
                         .commit();
             }
             mTwoPane = false;
+            getSupportActionBar().setElevation(0f);
         }
         MainFragment mainFragment = ((MainFragment)getSupportFragmentManager().findFragmentById(R.id.main_activity));
         if(mainFragment != null){

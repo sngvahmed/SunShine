@@ -24,11 +24,11 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="@string/day"
                 android:id="@+id/day_mainActivity"
-                android:textSize="25dp"
+                android:textSize="45dp"
                 />
 
             <TextView
-                android:textSize="25dp"
+                android:textSize="35dp"
                 android:textColor="#000000"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
@@ -43,7 +43,7 @@
                     android:textColor="#000000"
                     android:paddingLeft="5dp"
                     android:layout_width="wrap_content"
-                    android:textSize="25dp"
+                    android:textSize="30dp"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="@string/maxGrade"
@@ -52,7 +52,7 @@
                 <TextView
                     android:textColor="#000000"
                     android:paddingLeft="15dp"
-                    android:textSize="18dp"
+                    android:textSize="20dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textAppearance="?android:attr/textAppearanceSmall"
