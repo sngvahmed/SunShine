@@ -6,7 +6,6 @@
 
     <LinearLayout
         android:padding="10dp"
-        android:background="#e3a21a"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -24,6 +23,7 @@
                 android:id="@+id/CloudImage_cloudItem"
                 android:src="@drawable/ic_light_clouds"
                 android:layout_alignParentRight="true"
+                android:background="@drawable/touch_selector"
                 android:layout_gravity="left"
                 android:paddingRight="35dp"
                 />
