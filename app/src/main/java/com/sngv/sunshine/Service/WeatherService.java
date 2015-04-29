@@ -4,6 +4,7 @@ import android.app.IntentService;
 import android.content.Intent;
 import android.widget.Toast;
 
+import com.sngv.sunshine.Controller.Main.MainFragment;
 import com.sngv.sunshine.DB.DBController;
 import com.sngv.sunshine.DB.domain.WeatherItem;
 
@@ -85,6 +86,10 @@ public class WeatherService extends IntentService{
                 for(WeatherItem str : weathers){
                     dbController.insertIntoWeather(str);
                 }
+                Intent broadcastIntent = new Intent();
+                broadcastIntent.setAction(MainFragment.WeatherReciver.PROCESS_RESPONSE);
+                broadcastIntent.addCategory(Intent.CATEGORY_DEFAULT);
+                sendBroadcast(broadcastIntent);
             } catch (JSONException e) {
                 Toast.makeText(this, "JSON EXCEPTION :: " + e.toString(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();

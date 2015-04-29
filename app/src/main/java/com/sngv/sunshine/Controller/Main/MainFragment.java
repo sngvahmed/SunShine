@@ -1,5 +1,6 @@
 package com.sngv.sunshine.Controller.Main;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,16 +64,22 @@ public class MainFragment extends Fragment {
     }
 
 
-    private void updateWeather() {
+    public void updateWeather() {
         updateSetting();
-        insertIntoListFromDB();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        updateWeather();
     }
 
     public void updateSetting(){
         boolean check = false;
-        if(locationItem == null)
-            locationItem = new LocationItem(getLocation() , getCounter() , getUnitType());
-        else{
+        if(locationItem == null) {
+            locationItem = new LocationItem(getLocation(), getCounter(), getUnitType());
+            check = true;
+        }else{
             if(!locationItem.getCounter().equals(getCounter())) check = true;
             if(!locationItem.getUnitType().equals(getUnitType()))check = true;
             locationItem.setLocation(getLocation());
@@ -125,7 +132,6 @@ public class MainFragment extends Fragment {
                 retrieveFromAPI();
                 c = dbController.getAllWeatherCursor();
                 if(!c.moveToFirst()){
-//                    Toast.makeText(MainActivity.this, "Check your Connection" , Toast.LENGTH_LONG).show();
                     return ;
                 }
             }
@@ -134,7 +140,6 @@ public class MainFragment extends Fragment {
             weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
             listView.setAdapter(weatherAdapter);
         } catch (Exception e){
-            //Toast.makeText(MainActivity.this, "date base internal error" , Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }
@@ -157,7 +162,6 @@ public class MainFragment extends Fragment {
         });
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
@@ -168,8 +172,8 @@ public class MainFragment extends Fragment {
             openPreferredLocationInMap();
         }else if (id == R.id.action_refresh){
             Toast.makeText(getActivity() , "refresh" , Toast.LENGTH_LONG).show();
+            retrieveFromAPI();
         }
-        updateWeather();
         return super.onOptionsItemSelected(item);
     }
 
@@ -196,5 +200,18 @@ public class MainFragment extends Fragment {
         if(weatherAdapter != null){
             weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
         }
+    }
+
+    public class WeatherReciver extends BroadcastReceiver {
+
+        public static final String PROCESS_RESPONSE = "weather.reciver";
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            Toast.makeText(getActivity() , "recive" , Toast.LENGTH_LONG).show();
+            updateWeather();
+        }
+
+
     }
 }

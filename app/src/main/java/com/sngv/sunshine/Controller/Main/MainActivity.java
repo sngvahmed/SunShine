@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Details.DetailFragment;
@@ -39,6 +40,7 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
         MainFragment mainFragment = ((MainFragment)getSupportFragmentManager().findFragmentById(R.id.main_activity));
         if(mainFragment != null){
             mainFragment.setmUseTodayLayout(!mTwoPane);
+            mainFragment.updateWeather();
         }
     }
 
@@ -47,6 +49,8 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
     }
+
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
