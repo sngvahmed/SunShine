@@ -3,6 +3,7 @@ package com.sngv.sunshine.Service;
 import android.text.format.Time;
 
 import com.sngv.sunshine.DB.domain.WeatherItem;
+import com.sngv.sunshine.Utility.Utility;
 
 import org.json.JSONArray;
 import org.json.JSONException;

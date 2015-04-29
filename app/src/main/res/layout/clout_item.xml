@@ -12,9 +12,8 @@
 
 
         <FrameLayout
-            android:layout_width="60dp"
+            android:layout_width="40dp"
             android:layout_height="wrap_content">
-
             <ImageView
                 android:id="@+id/CloudImage_cloudItem"
                 android:src="@drawable/ic_light_clouds"
@@ -33,7 +32,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="sans-serif-condensed"
-                android:textAppearance="?android:textAppearanceLarge"/>
+                android:textAppearance="?android:textAppearanceMedium"/>
 
             <TextView
                 android:text="@string/description"

@@ -10,6 +10,7 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/ForecastTheme">
+        <service android:name=".Service.WeatherService"></service>
         <activity
             android:name=".Controller.Main.MainActivity"
             android:label="@string/app_name" >

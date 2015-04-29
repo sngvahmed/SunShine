@@ -17,15 +17,15 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.DBController;
 import com.sngv.sunshine.DB.domain.LocationItem;
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.Service.JsonParser;
-import com.sngv.sunshine.Service.MultiPanelLisnter;
-import com.sngv.sunshine.Service.Utility;
+import com.sngv.sunshine.Service.WeatherService;
+import com.sngv.sunshine.Utility.MultiPanelLisnter;
+import com.sngv.sunshine.Utility.Utility;
 
 import org.json.JSONException;
 
@@ -109,23 +109,12 @@ public class MainFragment extends Fragment {
     }
 
     public void retrieveFromAPI(){
-        JsonParser jsonParser = new JsonParser();
-        String counter = locationItem.getCounter();
-        String details = locationItem.getWeatherFromApi(locationItem, counter);
-        try {
-            ArrayList<WeatherItem> weathers = jsonParser.getWeatherDataFromJson(details, Integer.parseInt(counter));
-            dbController.deleteAll();
-            for(WeatherItem str : weathers){
-                dbController.insertIntoWeather(str);
-            }
-            insertIntoListFromDB();
-        } catch (JSONException e) {
-            Toast.makeText(getActivity(), "JSON EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        } catch (Exception e){
-            Toast.makeText(getActivity(), "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
-            e.printStackTrace();
-        }
+        Intent serviceIntent = new Intent(getActivity() , WeatherService.class);
+        serviceIntent.putExtra(WeatherService.COUNTER_EXTRA , locationItem.getCounter());
+        serviceIntent.putExtra(WeatherService.CITY_EXTRA , locationItem.getLocation());
+        serviceIntent.putExtra(WeatherService.UNIT_EXTRA, locationItem.getUnitType());
+        getActivity().startService(serviceIntent);
+        insertIntoListFromDB();
     }
 
     public void insertIntoListFromDB(){
@@ -175,12 +164,12 @@ public class MainFragment extends Fragment {
         if (id == R.id.action_settings) {
             Intent intent = new Intent(getActivity() , SettingsActivity.class);
             startActivity(intent);
-            return true;
         }else if (id == R.id.action_map){
             openPreferredLocationInMap();
         }else if (id == R.id.action_refresh){
-            retrieveFromAPI();
+            Toast.makeText(getActivity() , "refresh" , Toast.LENGTH_LONG).show();
         }
+        updateWeather();
         return super.onOptionsItemSelected(item);
     }
 

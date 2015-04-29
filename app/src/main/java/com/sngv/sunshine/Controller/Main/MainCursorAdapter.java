@@ -2,7 +2,6 @@ package com.sngv.sunshine.Controller.Main;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +11,7 @@ import android.widget.TextView;
 
 import com.sngv.sunshine.R;
 import com.sngv.sunshine.DB.domain.WeatherItem;
-import com.sngv.sunshine.Service.Utility;
+import com.sngv.sunshine.Utility.Utility;
 
 /**
  * Created by sngv on 08/04/15.
@@ -61,6 +60,9 @@ public class MainCursorAdapter extends CursorAdapter {
             ((TextView)convertView.findViewById(R.id.description_mainActivity)).setText(today.getDescription());
             ((ImageView)convertView.findViewById(R.id.CloudImage_mainActitivty)).
                     setImageResource(Utility.getArtResourceForWeatherCondition(Integer.parseInt(today.getTempId())));
+            ((ImageView)convertView.findViewById(R.id.CloudImage_mainActitivty)).
+                    setContentDescription(today.getDescription());
+
 
         }else {
             TextView day = (TextView) convertView.findViewById(R.id.day_cloudItem);
@@ -77,6 +79,8 @@ public class MainCursorAdapter extends CursorAdapter {
             description.setText(weatherItem.getDescription());
             ((ImageView)convertView.findViewById(R.id.CloudImage_cloudItem)).
                     setImageResource(Utility.getIconResourceForWeatherCondition(Integer.parseInt(weatherItem.getTempId())));
+            ((ImageView)convertView.findViewById(R.id.CloudImage_cloudItem)).
+                    setContentDescription(weatherItem.getDescription());
         }
     }
 

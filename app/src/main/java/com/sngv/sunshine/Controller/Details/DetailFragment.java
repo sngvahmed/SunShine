@@ -12,7 +12,7 @@ import android.widget.Toast;
 
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.Service.Utility;
+import com.sngv.sunshine.Utility.Utility;
 
 public class DetailFragment extends Fragment {
 
@@ -67,6 +67,7 @@ public class DetailFragment extends Fragment {
         humidity.setText(Utility.formatHumidity(humitiy , getActivity().getApplicationContext()));
         degree.setText(Utility.formatDegree(degreed, getActivity().getApplicationContext()));
         imageView.setImageResource(Utility.getArtResourceForWeatherCondition(Integer.parseInt(weatherItem.getTempId())));
+        imageView.setContentDescription(weatherItem.getDescription());
     }
 
     private void getExtra() {

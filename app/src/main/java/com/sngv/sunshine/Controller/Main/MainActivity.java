@@ -8,14 +8,14 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Details.DetailFragment;
 import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.Service.MultiPanelLisnter;
+import com.sngv.sunshine.Service.WeatherService;
+import com.sngv.sunshine.Utility.MultiPanelLisnter;
 
 
 public class MainActivity extends ActionBarActivity implements MultiPanelLisnter{
@@ -40,7 +40,6 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
         if(mainFragment != null){
             mainFragment.setmUseTodayLayout(!mTwoPane);
         }
-
     }
 
     @Override
@@ -51,13 +50,9 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
-        if (id == R.id.action_settings) {
-            Intent intent = new Intent(this , SettingsActivity.class);
-            startActivity(intent);
-            return true;
-        }else if (id == R.id.action_map){
-            openPreferredLocationInMap();
+        MainFragment mainFragment = ((MainFragment)getSupportFragmentManager().findFragmentById(R.id.main_activity));
+        if(mainFragment != null){
+            return mainFragment.onOptionsItemSelected(item);
         }
         return super.onOptionsItemSelected(item);
     }

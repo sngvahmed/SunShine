@@ -1,4 +1,4 @@
-package com.sngv.sunshine.Service;
+package com.sngv.sunshine.Utility;
 
 import com.sngv.sunshine.DB.domain.WeatherItem;
 
