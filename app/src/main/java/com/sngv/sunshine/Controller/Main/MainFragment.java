@@ -3,6 +3,7 @@ package com.sngv.sunshine.Controller.Main;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.net.Uri;
@@ -44,6 +45,7 @@ public class MainFragment extends Fragment {
     private String POSITION_KEY = "position_key";
     private int position = -1;
     private boolean mUseTodayLayout = true;
+    private IntentFilter intentFilter;
 
     public MainFragment() {
     }
@@ -60,12 +62,17 @@ public class MainFragment extends Fragment {
             listView.smoothScrollToPosition(position);
             listView.setSelection(position);
         }
+        intentFilter = new IntentFilter(WeatherReciver.PROCESS_RESPONSE);
+        intentFilter.addCategory(Intent.CATEGORY_DEFAULT);
+        WeatherReciver weatherReciver = new WeatherReciver();
+        getActivity().registerReceiver(weatherReciver, intentFilter);
         return view;
     }
 
 
     public void updateWeather() {
         updateSetting();
+        insertIntoListFromDB();
     }
 
     @Override
@@ -121,7 +128,6 @@ public class MainFragment extends Fragment {
         serviceIntent.putExtra(WeatherService.CITY_EXTRA , locationItem.getLocation());
         serviceIntent.putExtra(WeatherService.UNIT_EXTRA, locationItem.getUnitType());
         getActivity().startService(serviceIntent);
-        insertIntoListFromDB();
     }
 
     public void insertIntoListFromDB(){
@@ -171,8 +177,7 @@ public class MainFragment extends Fragment {
         }else if (id == R.id.action_map){
             openPreferredLocationInMap();
         }else if (id == R.id.action_refresh){
-            Toast.makeText(getActivity() , "refresh" , Toast.LENGTH_LONG).show();
-            retrieveFromAPI();
+            updateWeather();
         }
         return super.onOptionsItemSelected(item);
     }
@@ -211,7 +216,5 @@ public class MainFragment extends Fragment {
             Toast.makeText(getActivity() , "recive" , Toast.LENGTH_LONG).show();
             updateWeather();
         }
-
-
     }
 }

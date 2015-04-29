@@ -39,7 +39,6 @@ public class WeatherService extends IntentService{
         String unit = intent.getStringExtra(UNIT_EXTRA);
         String City = intent.getStringExtra(CITY_EXTRA);
         String counter = intent.getStringExtra(COUNTER_EXTRA);
-        Toast.makeText(this , City + " " + unit + " " + counter , Toast.LENGTH_LONG).show();
         try {
             String api_url = API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt="+counter;
 
