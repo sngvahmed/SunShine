@@ -45,6 +45,11 @@
     <string name="humidity">Humidity</string>
 
     <string name="format_temperature"><xliff:g id="temp">%1.0f</xliff:g>\u00B0</string>
+    <string name="format_degree">Degree: <xliff:g id="degree">%1$1.0f</xliff:g> \u00B0 </string>
+    <string name="format_wind_kmh">Wind: <xliff:g id="speed">%1$1.0f</xliff:g> km/h </string>
+    <string name="format_humidity">Humidity: <xliff:g id="speed">%1$1.0f</xliff:g> %% </string>
+    <string name="format_pressure">Pressure: <xliff:g id="pressure">%1.0f</xliff:g> hPa</string>
+
     <string name="title_activity_main">Main</string>
     <string name="title_activity_details">Details</string>
 </resources>

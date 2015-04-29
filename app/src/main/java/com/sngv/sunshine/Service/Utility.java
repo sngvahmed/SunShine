@@ -84,4 +84,20 @@ public class Utility {
     public static String formatTemp(double temp , Context con){
         return con.getString(R.string.format_temperature , temp);
     }
+
+    public static String formatDegree(double temp , Context con){
+        return con.getString(R.string.format_degree,temp);
+    }
+
+    public static String formatWindSpeed(double windSpeed , Context con){
+        return con.getString(R.string.format_wind_kmh , windSpeed);
+    }
+
+    public static String formatPressure(double pressure , Context con){
+        return con.getString(R.string.format_pressure , pressure);
+    }
+
+    public static String formatHumidity(double windSpeed , Context con){
+        return con.getString(R.string.format_humidity , windSpeed);
+    }
 }

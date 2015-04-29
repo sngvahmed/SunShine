@@ -52,15 +52,20 @@ public class DetailFragment extends Fragment {
     private void setItem() {
         double maxD = Double.parseDouble(weatherItem.getMaxGrade());
         double minD = Double.parseDouble(weatherItem.getMinGrade());
+        double degreed = Double.parseDouble(weatherItem.getDegree());
+        double windSpeed = Double.parseDouble(weatherItem.getWindSpeed());
+        double pressured = Double.parseDouble(weatherItem.getPressure());
+        double humitiy = Double.parseDouble(weatherItem.getHumidity());
+
         country.setText(weatherItem.getCountry());
         day.setText(weatherItem.getDay());
         min.setText(Utility.formatTemp(minD , getActivity().getApplicationContext()));
         max.setText(Utility.formatTemp(maxD , getActivity().getApplicationContext()));
         desc.setText(weatherItem.getDescription());
-        speed.setText(weatherItem.getWindSpeed());
-        pressure.setText(weatherItem.getPressure());
-        humidity.setText(weatherItem.getHumidity());
-        degree.setText(weatherItem.getDegree());
+        speed.setText(Utility.formatWindSpeed(windSpeed , getActivity().getApplicationContext()));
+        pressure.setText(Utility.formatPressure(pressured, getActivity().getApplicationContext()));
+        humidity.setText(Utility.formatHumidity(humitiy , getActivity().getApplicationContext()));
+        degree.setText(Utility.formatDegree(degreed, getActivity().getApplicationContext()));
         imageView.setImageResource(Utility.getArtResourceForWeatherCondition(Integer.parseInt(weatherItem.getTempId())));
     }
 
