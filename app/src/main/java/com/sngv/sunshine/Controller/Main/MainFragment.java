@@ -209,7 +209,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-//            updateWeather();
+            updateWeather();
         }
     }
 }
