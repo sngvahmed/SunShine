@@ -14,7 +14,7 @@
         android:title="@string/pref_counter_label"
         android:key="@string/pref_counter_Key"
         android:defaultValue="@string/pref_counter"
-        android:inputType="text"
+        android:inputType="number"
         android:singleLine="true" />
 
     <ListPreference

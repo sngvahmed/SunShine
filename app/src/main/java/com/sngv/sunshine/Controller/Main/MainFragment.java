@@ -127,7 +127,6 @@ public class MainFragment extends Fragment {
     }
 
     public void insertIntoListFromDB(){
-        ((TextView)view.findViewById(R.id.City)).setText(locationItem.getLocation());
         try {
             Cursor c = dbController.getAllWeatherCursor();
             if (!c.moveToFirst()){
