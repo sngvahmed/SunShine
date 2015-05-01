@@ -3,7 +3,7 @@ sunshine is a applicatioon for weather
 # screenshots
 
 # apk download
-release v0.1: [download](https://raw.githubusercontent.com/sngvahmed/SunShine/master/app-release.apk)
+release v0.1: [download](https://raw.githubusercontent.com/sngvahmed/SunShine/master/app/Released/app-release.apk)
 http://s22.postimg.org/t9vn8lcbl/Screenshot_2015_05_01_21_31_34.jpg
 ## Tablet Design
 ![for tablet](http://s22.postimg.org/qng4rnl41/Screenshot_from_2015_05_01_21_33_34.png)
