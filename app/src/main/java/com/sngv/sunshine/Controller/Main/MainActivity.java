@@ -12,10 +12,8 @@ import android.widget.Toast;
 
 import com.sngv.sunshine.Controller.Details.DetailActivity;
 import com.sngv.sunshine.Controller.Details.DetailFragment;
-import com.sngv.sunshine.Controller.Setting.SettingsActivity;
 import com.sngv.sunshine.DB.domain.WeatherItem;
 import com.sngv.sunshine.R;
-import com.sngv.sunshine.Service.WeatherService;
 import com.sngv.sunshine.Utility.MultiPanelLisnter;
 
 
@@ -40,7 +38,6 @@ public class MainActivity extends ActionBarActivity implements MultiPanelLisnter
         MainFragment mainFragment = ((MainFragment)getSupportFragmentManager().findFragmentById(R.id.main_activity));
         if(mainFragment != null){
             mainFragment.setmUseTodayLayout(!mTwoPane);
-            mainFragment.updateWeather();
         }
     }
 

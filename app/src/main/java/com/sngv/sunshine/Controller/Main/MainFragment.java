@@ -29,10 +29,6 @@ import com.sngv.sunshine.Service.WeatherService;
 import com.sngv.sunshine.Utility.MultiPanelLisnter;
 import com.sngv.sunshine.Utility.Utility;
 
-import org.json.JSONException;
-
-import java.util.ArrayList;
-
 public class MainFragment extends Fragment {
     private DBController dbController;
     private ListView listView;
@@ -213,8 +209,7 @@ public class MainFragment extends Fragment {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            Toast.makeText(getActivity() , "recive" , Toast.LENGTH_LONG).show();
-            updateWeather();
+//            updateWeather();
         }
     }
 }
