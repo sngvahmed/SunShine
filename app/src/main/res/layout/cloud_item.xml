@@ -3,58 +3,54 @@
     android:id="@+id/MainActivity"
     style="@style/main_layout"
     android:layout_height="80dp"
+    android:orientation="horizontal"
+    android:padding="10dp"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:id="@+id/CloudImage_cloudItem"
+        android:layout_width="40dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/weather_description"
+        android:src="@drawable/ic_light_clouds" />
 
     <LinearLayout
         style="@style/main_layout"
-        android:orientation="horizontal"
-        android:padding="10dp">
+        android:layout_width="0dp"
+        android:layout_weight="7">
 
-        <ImageView
-            android:id="@+id/CloudImage_cloudItem"
-            android:layout_width="40dp"
-            android:layout_height="match_parent"
-            android:layout_gravity="center_horizontal"
-            android:src="@drawable/ic_light_clouds" />
+        <TextView
+            android:id="@+id/day_cloudItem"
+            style="@style/textView"
+            android:text="@string/day"
+            android:textAppearance="?android:textAppearanceMedium"
+            android:textColor="@color/ligth_text_color" />
 
-        <LinearLayout
-            style="@style/main_layout"
-            android:layout_width="0dp"
-            android:layout_weight="7">
+        <TextView
+            android:id="@+id/description_cloudItem"
+            style="@style/textView"
+            android:text="@string/description"
+            android:textAppearance="?android:textAppearanceSmall"
+            android:textColor="@color/ligth_text_color" />
+    </LinearLayout>
 
-            <TextView
-                android:id="@+id/day_cloudItem"
-                style="@style/textView"
-                android:text="@string/day"
-                android:textAppearance="?android:textAppearanceMedium"
-                android:textColor="@color/ligth_text_color" />
+    <LinearLayout
+        style="@style/main_layout"
+        android:layout_width="0dp"
+        android:layout_weight="1">
 
-            <TextView
-                android:id="@+id/description_cloudItem"
-                style="@style/textView"
-                android:text="@string/description"
-                android:textAppearance="?android:textAppearanceSmall"
-                android:textColor="@color/ligth_text_color" />
-        </LinearLayout>
+        <TextView
+            android:id="@+id/maxGrade_cloudItem"
+            style="@style/textView"
+            android:text="@string/maxGrade"
+            android:textAppearance="?android:textAppearanceLarge" />
 
-        <LinearLayout
-            style="@style/main_layout"
-            android:layout_width="0dp"
-            android:layout_weight="1">
-
-            <TextView
-                android:id="@+id/maxGrade_cloudItem"
-                style="@style/textView"
-                android:text="@string/maxGrade"
-                android:textAppearance="?android:textAppearanceLarge" />
-
-            <TextView
-                android:id="@+id/minGrade_cloudItem"
-                style="@style/textView"
-                android:text="@string/minGrade"
-                android:textAppearance="?android:textAppearanceSmall" />
-        </LinearLayout>
-
+        <TextView
+            android:id="@+id/minGrade_cloudItem"
+            style="@style/textView"
+            android:text="@string/minGrade"
+            android:textAppearance="?android:textAppearanceSmall" />
     </LinearLayout>
 
 </LinearLayout>

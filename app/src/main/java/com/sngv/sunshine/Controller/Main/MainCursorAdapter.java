@@ -56,9 +56,9 @@ public class MainCursorAdapter extends CursorAdapter {
             ((TextView)convertView.findViewById(R.id.maxGrade_mainActivity)).setText(Utility.formatTemp(max , context));
             ((TextView)convertView.findViewById(R.id.minGrade_mainActivity)).setText(Utility.formatTemp(min,context));
             ((TextView)convertView.findViewById(R.id.description_mainActivity)).setText(today.getDescription());
-            ((ImageView)convertView.findViewById(R.id.CloudImage_mainActitivty)).
+            ((ImageView)convertView.findViewById(R.id.CloudImage_mainActivity)).
                     setImageResource(Utility.getArtResourceForWeatherCondition(Integer.parseInt(today.getTempId())));
-            ((ImageView)convertView.findViewById(R.id.CloudImage_mainActitivty)).
+            ((ImageView)convertView.findViewById(R.id.CloudImage_mainActivity)).
                     setContentDescription(today.getDescription());
 
 
