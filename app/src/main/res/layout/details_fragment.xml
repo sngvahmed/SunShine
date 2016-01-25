@@ -1,187 +1,149 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/details_fragment"
-    tools:context="com.sngv.sunshine.Controller.Main.MainFragment">
-    <LinearLayout
-        android:background="@color/sunshine_blue"
-        android:paddingLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-        <TextView
-            android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="left"
-            android:text="Country"
-            android:fontFamily="sans-serif-condensed"
-            android:textAlignment="gravity"
-            android:textSize="30sp"
-            android:id="@+id/country_details"
-            android:paddingRight="25dp"/>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
 
-        <TextView
-            android:fontFamily="sans-serif-condensed"
-            android:textColor="@color/white"
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
+
+        <FrameLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="20sp"
-            android:text="@string/day"
-            android:id="@+id/day_details"/>
-    </LinearLayout>
-    <LinearLayout
-        android:background="@color/sunshine_blue"
-        android:paddingLeft="20dp"
-        android:paddingRight="40dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_horizontal"
-            android:orientation="vertical">
+            android:layout_height="wrap_content">
 
             <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-                <TextView
-                    android:fontFamily="sans-serif-light"
-                    android:layout_weight="0"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/maxGrade"
-                    android:textSize="50sp"
-                    android:textColor="@color/white"
-                    android:layout_gravity="center_horizontal"
-                    android:id="@+id/maxGrade_details"
-                    android:paddingRight="5dp"/>
+                android:id="@+id/details_fragment"
+                style="@style/main_layout"
+                tools:context="com.sngv.sunshine.Controller.Main.MainFragment">
 
-                <TextView
-                    android:textColor="@color/white"
-                    android:fontFamily="sans-serif-light"
-                    android:textSize="40sp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    style="@style/main_layout"
                     android:layout_height="wrap_content"
-                    android:text="@string/minGrade"
-                    android:id="@+id/minGrade_details"
-                    />
+                    android:background="@color/sunshine_color"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/country_details"
+                        style="@style/textView"
+                        android:text="@string/country"
+                        android:textColor="@color/white"
+                        android:textSize="25sp" />
+
+                    <TextView
+                        android:id="@+id/day_details"
+                        style="@style/textView"
+                        android:text="@string/day"
+                        android:textColor="@color/white"
+                        android:paddingLeft="5dp" />
                 </LinearLayout>
-        </LinearLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="right" >
-
-            <ImageView
-                android:layout_marginLeft="10dp"
-                android:layout_width="wrap_content"
-                android:src="@drawable/art_clear"
-                android:layout_height="wrap_content"
-                android:id="@+id/CloudImage_details"
-                android:layout_alignParentRight="true"
-                android:layout_gravity="right"
-                />
-
-        </LinearLayout>
-    </LinearLayout>
-
-
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
-    <LinearLayout
-        android:padding="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <TextView
-            android:textColor="@color/grey_700"
-            android:paddingLeft="20dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="40sp"
-            android:text="@string/description"
-            android:id="@+id/description_details"
-            android:gravity="left"
-            android:layout_gravity="left"
-            android:paddingBottom="10dp"
-            />
-
-        <!--degree -->
-        <LinearLayout
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:paddingBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="30sp"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/degree"
-                    android:id="@+id/degree_details"
-                    />
-        </LinearLayout>
+                    android:background="@color/sunshine_color"
+                    android:paddingLeft="20dp"
+                    android:paddingRight="40dp">
+
+                    <LinearLayout
+                        style="@style/main_layout"
+                        android:layout_width="wrap_content"
+                        android:gravity="center_horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:id="@+id/maxGrade_details"
+                                style="@style/textView"
+                                android:paddingRight="5dp"
+                                android:text="@string/maxGrade"
+                                android:textColor="@color/white"
+                                android:textSize="50sp" />
+
+                            <TextView
+                                android:id="@+id/minGrade_details"
+                                style="@style/textView"
+                                android:paddingLeft="8dp"
+                                android:text="@string/minGrade"
+                                android:textColor="@color/white"
+                                android:textSize="40sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="right">
+
+                        <ImageView
+                            android:id="@+id/CloudImage_details"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_gravity="right"
+                            android:layout_marginLeft="10dp"
+                            android:src="@drawable/art_clear" />
+
+                    </LinearLayout>
+                </LinearLayout>
 
 
-        <!--windSpeed -->
-        <LinearLayout
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-                <TextView
-                android:textSize="30sp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/windSpeed"
-                android:id="@+id/windSpeed_details"
-                />
+                <ScrollView style="@style/main_layout">
+
+                    <LinearLayout
+                        style="@style/main_layout"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:id="@+id/description_details"
+                            style="@style/textView"
+                            android:paddingBottom="10dp"
+                            android:paddingLeft="10dp"
+                            android:text="@string/description"
+                            android:textSize="40sp" />
+
+                        <!--degree-->
+                        <TextView
+                            android:id="@+id/degree_details"
+                            style="@style/textView"
+                            android:text="@string/degree" />
+
+
+                        <!--windSpeed -->
+                        <TextView
+                            android:id="@+id/windSpeed_details"
+                            style="@style/textView"
+                            android:text="@string/windSpeed" />
+
+
+                        <!--pressure-->
+                        <TextView
+                            android:id="@+id/pressure_details"
+                            style="@style/textView"
+                            android:text="@string/pressure" />
+
+
+                        <!--humidity -->
+                        <TextView
+                            android:id="@+id/humidity_details"
+                            style="@style/textView"
+                            android:text="@string/humidity" />
+
+                    </LinearLayout>
+                </ScrollView>
             </LinearLayout>
+        </FrameLayout>
 
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right|top"
+            android:id="@+id/close_dialog"
+            android:src="@drawable/abc_ic_clear_mtrl_alpha" />
+    </FrameLayout>
+</FrameLayout>
 
-        <!--pressure -->
-        <LinearLayout
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:paddingBottom="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-                <TextView
-                    android:textSize="30sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/pressure"
-                    android:id="@+id/pressure_details"
-                    />
-            </LinearLayout>
-
-
-        <!--humidity -->
-        <LinearLayout
-            android:paddingRight="15dp"
-            android:paddingLeft="15dp"
-            android:paddingBottom="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-                <TextView
-                    android:textSize="30sp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/humidity"
-                    android:id="@+id/humidity_details"
-                    />
-            </LinearLayout>
-    </LinearLayout>
-    </ScrollView>
-</LinearLayout>

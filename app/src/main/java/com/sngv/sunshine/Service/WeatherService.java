@@ -21,7 +21,7 @@ import java.util.ArrayList;
 /**
  * Created by sngv on 29/04/15.
  */
-public class WeatherService extends IntentService{
+public class WeatherService extends IntentService {
     public static String UNIT_EXTRA = "unit_extra";
     public static String CITY_EXTRA = "city_extra";
     public static String COUNTER_EXTRA = "counter_extra";
@@ -29,6 +29,7 @@ public class WeatherService extends IntentService{
     private BufferedReader bufferedReader;
     private String forecastJsonStr;
     private String API_WITH_CITY = "http://api.openweathermap.org/data/2.5/forecast/daily?q=";
+    private String API_KEY = "APPID=57b7e7166b2b88c67403396642c01917";
 
     public WeatherService() {
         super("WeatherService");
@@ -40,37 +41,33 @@ public class WeatherService extends IntentService{
         String City = intent.getStringExtra(CITY_EXTRA);
         String counter = intent.getStringExtra(COUNTER_EXTRA);
         try {
-            String api_url = API_WITH_CITY +City+"&mode=json&units="+unit+"&cnt="+counter;
+            String api_url = API_WITH_CITY + City + "&mode=json&units=" + unit + "&cnt=" + counter + "&" + API_KEY;
 
             URL url = new URL(api_url);
             urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setReadTimeout(10000 /* milliseconds */);
-            urlConnection.setConnectTimeout(15000 /* milliseconds */);
+            urlConnection.setReadTimeout(10000);
+            urlConnection.setConnectTimeout(15000);
             urlConnection.connect();
 
             InputStream inputStream = urlConnection.getInputStream();
             StringBuffer stringBuffer = new StringBuffer();
 
-            if(stringBuffer == null){
-                System.out.println("error");
-            }
-
             bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             String line;
 
-            while((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 stringBuffer.append(line + "\n");
             }
             forecastJsonStr = stringBuffer.toString();
 
         } catch (IOException e) {
             e.printStackTrace();
-        }finally {
-            if(urlConnection != null){
+        } finally {
+            if (urlConnection != null) {
                 urlConnection.disconnect();
             }
-            if(bufferedReader != null){
+            if (bufferedReader != null) {
                 try {
                     bufferedReader.close();
                 } catch (IOException e) {
@@ -82,7 +79,7 @@ public class WeatherService extends IntentService{
                 ArrayList<WeatherItem> weathers = jsonParser.getWeatherDataFromJson(forecastJsonStr, Integer.parseInt(counter));
                 DBController dbController = new DBController(this);
                 dbController.deleteAll();
-                for(WeatherItem str : weathers){
+                for (WeatherItem str : weathers) {
                     dbController.insertIntoWeather(str);
                 }
                 Intent broadcastIntent = new Intent();
@@ -92,8 +89,8 @@ public class WeatherService extends IntentService{
             } catch (JSONException e) {
                 Toast.makeText(this, "JSON EXCEPTION :: " + e.toString(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
-            } catch (Exception e){
-                Toast.makeText(this, "EXCEPTION :: " + e.toString() , Toast.LENGTH_LONG).show();
+            } catch (Exception e) {
+                Toast.makeText(this, "EXCEPTION :: " + e.toString(), Toast.LENGTH_LONG).show();
                 e.printStackTrace();
             }
         }

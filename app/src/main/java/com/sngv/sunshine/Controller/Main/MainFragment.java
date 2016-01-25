@@ -53,7 +53,7 @@ public class MainFragment extends Fragment {
         init();
         onClickListnerInit();
         updateWeather();
-        if(savedInstanceState != null && savedInstanceState.containsKey(POSITION_KEY)){
+        if (savedInstanceState != null && savedInstanceState.containsKey(POSITION_KEY)) {
             position = savedInstanceState.getInt(POSITION_KEY);
             listView.smoothScrollToPosition(position);
             listView.setSelection(position);
@@ -77,34 +77,34 @@ public class MainFragment extends Fragment {
         updateWeather();
     }
 
-    public void updateSetting(){
+    public void updateSetting() {
         boolean check = false;
-        if(locationItem == null) {
+        if (locationItem == null) {
             locationItem = new LocationItem(getLocation(), getCounter(), getUnitType());
             check = true;
-        }else{
-            if(!locationItem.getCounter().equals(getCounter())) check = true;
-            if(!locationItem.getUnitType().equals(getUnitType()))check = true;
+        } else {
+            if (!locationItem.getCounter().equals(getCounter())) check = true;
+            if (!locationItem.getUnitType().equals(getUnitType())) check = true;
             locationItem.setLocation(getLocation());
             locationItem.setCounter(getCounter());
             locationItem.setUnitType(getUnitType());
         }
-        if(check)retrieveFromAPI();
+        if (check) retrieveFromAPI();
     }
 
-    public String getLocation(){
-        return pref.getString(getString(R.string.pref_location_key) , getString(R.string.pref_location_default));
+    public String getLocation() {
+        return pref.getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default));
     }
 
-    public String getUnitType(){
-        return pref.getString( getString(R.string.pref_units_key),getString(R.string.pref_units_metric));
+    public String getUnitType() {
+        return pref.getString(getString(R.string.pref_units_key), getString(R.string.pref_units_metric));
     }
 
-    public String getCounter(){
-        return pref.getString(getString(R.string.pref_counter_Key),getString(R.string.pref_counter_deafult));
+    public String getCounter() {
+        return pref.getString(getString(R.string.pref_counter_Key), getString(R.string.pref_counter_deafult));
     }
 
-    public void init(){
+    public void init() {
         today = new WeatherItem();
         pref = PreferenceManager.getDefaultSharedPreferences(getActivity());
         listView = (ListView) view.findViewById(R.id.list_item_forecast);
@@ -113,50 +113,50 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
-        if(position != -1)
-            outState.putInt(POSITION_KEY , position);
+        if (position != -1)
+            outState.putInt(POSITION_KEY, position);
         super.onSaveInstanceState(outState);
     }
 
-    public void retrieveFromAPI(){
-        Intent serviceIntent = new Intent(getActivity() , WeatherService.class);
-        serviceIntent.putExtra(WeatherService.COUNTER_EXTRA , locationItem.getCounter());
-        serviceIntent.putExtra(WeatherService.CITY_EXTRA , locationItem.getLocation());
+    public void retrieveFromAPI() {
+        Intent serviceIntent = new Intent(getActivity(), WeatherService.class);
+        serviceIntent.putExtra(WeatherService.COUNTER_EXTRA, locationItem.getCounter());
+        serviceIntent.putExtra(WeatherService.CITY_EXTRA, locationItem.getLocation());
         serviceIntent.putExtra(WeatherService.UNIT_EXTRA, locationItem.getUnitType());
         getActivity().startService(serviceIntent);
     }
 
-    public void insertIntoListFromDB(){
+    public void insertIntoListFromDB() {
         try {
             Cursor c = dbController.getAllWeatherCursor();
-            if (!c.moveToFirst()){
+            if (!c.moveToFirst()) {
                 retrieveFromAPI();
                 c = dbController.getAllWeatherCursor();
-                if(!c.moveToFirst()){
-                    return ;
+                if (!c.moveToFirst()) {
+                    return;
                 }
             }
             today.setFromCursor(c);
-            weatherAdapter = new MainCursorAdapter(getActivity() , c);
+            weatherAdapter = new MainCursorAdapter(getActivity(), c);
             weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
             listView.setAdapter(weatherAdapter);
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
 
-    public void onClickListnerInit(){
+    public void onClickListnerInit() {
         final Context con = this.getActivity();
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int cPosition, long id) {
                 Cursor cursor = weatherAdapter.getCursor();
-                if(cursor != null && cursor.moveToPosition(cPosition)){
+                if (cursor != null && cursor.moveToPosition(cPosition)) {
                     WeatherItem weatherItem = new WeatherItem();
                     weatherItem.setFromCursor(cursor);
-                    ((MultiPanelLisnter)getActivity()).onItemSelect(weatherItem);
+                    ((MultiPanelLisnter) getActivity()).onItemSelect(weatherItem);
                 }
                 position = cPosition;
             }
@@ -167,11 +167,11 @@ public class MainFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(getActivity() , SettingsActivity.class);
+            Intent intent = new Intent(getActivity(), SettingsActivity.class);
             startActivity(intent);
-        }else if (id == R.id.action_map){
+        } else if (id == R.id.action_map) {
             openPreferredLocationInMap();
-        }else if (id == R.id.action_refresh){
+        } else if (id == R.id.action_refresh) {
             updateWeather();
         }
         return super.onOptionsItemSelected(item);
@@ -190,14 +190,14 @@ public class MainFragment extends Fragment {
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(uri);
 
-        if(intent.resolveActivity(getActivity().getPackageManager()) != null){
+        if (intent.resolveActivity(getActivity().getPackageManager()) != null) {
             startActivity(intent);
         }
     }
 
     public void setmUseTodayLayout(boolean mUseTodayLayout) {
         this.mUseTodayLayout = mUseTodayLayout;
-        if(weatherAdapter != null){
+        if (weatherAdapter != null) {
             weatherAdapter.setmUseTodayLayout(mUseTodayLayout);
         }
     }

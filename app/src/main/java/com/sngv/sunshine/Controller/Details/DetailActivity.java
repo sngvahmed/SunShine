@@ -41,7 +41,7 @@ public class DetailActivity extends ActionBarActivity {
         MenuItem menuItem = menu.findItem(R.id.action_share);
         ShareActionProvider mShareActionProvider = (ShareActionProvider) MenuItemCompat.getActionProvider(menuItem);
 
-        if(mShareActionProvider != null){
+        if (mShareActionProvider != null) {
             mShareActionProvider.setShareIntent(createIntentShare());
         }
         return true;
@@ -52,7 +52,7 @@ public class DetailActivity extends ActionBarActivity {
 
         int id = item.getItemId();
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(DetailActivity.this , SettingsActivity.class);
+            Intent intent = new Intent(DetailActivity.this, SettingsActivity.class);
             startActivity(intent);
         }
 
@@ -75,7 +75,7 @@ public class DetailActivity extends ActionBarActivity {
         }
     }
 
-    public String getFromIntentExtra(){
+    public String getFromIntentExtra() {
         return getIntent().getExtras().get(Intent.EXTRA_TEXT).toString();
     }
 
@@ -83,7 +83,7 @@ public class DetailActivity extends ActionBarActivity {
         Intent intent = new Intent(Intent.ACTION_SEND);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_WHEN_TASK_RESET);
         intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_TEXT , getFromIntentExtra());
+        intent.putExtra(Intent.EXTRA_TEXT, getFromIntentExtra());
         return intent;
     }
 

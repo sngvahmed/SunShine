@@ -41,11 +41,9 @@ public class MainCursorAdapter extends CursorAdapter {
     public View newView(Context context, Cursor cursor, ViewGroup parent) {
         if(getItemViewType(cursor.getPosition()) == 0)
             return LayoutInflater.from(context).inflate(R.layout.today  , parent , false);
-        return LayoutInflater.from(context).inflate(R.layout.clout_item , parent , false);
+        return LayoutInflater.from(context).inflate(R.layout.cloud_item, parent , false);
 
     }
-
-
 
     @Override
     public void bindView(View convertView, Context context, Cursor cursor) {
